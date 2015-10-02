@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewLookup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_MDM_ADMIN_INFO,COMM_MDM_PREFIX_INFO,COMM_DSS_OFFICER_INFO,COMM_MDM_UNIT_INFO,COMM_MDM_SECTION_INFO</TableName>
+  <ViewType>LookupListView</ViewType>
+  <ViewName>RMSM_MDM_ADMIN_INFO_LookupListView</ViewName>
+  <ViewTitle>ข้อมูลบุคลากร</ViewTitle>
+  <MasterPage />
+  <OrderBy>output/service</OrderBy>
+  <IsHasFilter>true</IsHasFilter>
+  <PageSize>20</PageSize>
+  <ReturnField />
+  <InputParameters />
+  <FilterParameters />
+  <FilterView />
+  <SQLSelect>SELECT VIEW_PERSONAL.OFFICER_ID,VIEW_PERSONAL.PREFIX_DESC,VIEW_PERSONAL.NAME,VIEW_PERSONAL.OFFICER_POSITION_NAME,VIEW_PERSONAL.ORG,VIEW_PERSONAL.SECTION_NAME
+FROM [dbo].[VIEW_PERSONAL]</SQLSelect>
+  <SQLSelectParams />
+  <Items>
+    <ExcelUIViewListItem>
+      <RowNumber>15</RowNumber>
+      <Caption>คำนำหน้า</Caption>
+      <DataBinding>VIEW_PERSONAL.PREFIX_DESC</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>16</RowNumber>
+      <Caption>ชื่อ-นามสกุล</Caption>
+      <DataBinding>VIEW_PERSONAL.NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>17</RowNumber>
+      <Caption>ตำแหน่งในสายงาน</Caption>
+      <DataBinding>VIEW_PERSONAL.OFFICER_POSITION_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>18</RowNumber>
+      <Caption>สำนัก/กอง</Caption>
+      <DataBinding>VIEW_PERSONAL.ORG</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>19</RowNumber>
+      <Caption>กลุ่ม/ส่วน/ฝ่าย</Caption>
+      <DataBinding>VIEW_PERSONAL.SECTION_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+  </Items>
+</ExcelUIViewLookup>

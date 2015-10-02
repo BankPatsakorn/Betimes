@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_RMM_MEETING_AGENDA_DETAIL_DOC</TableName>
+  <ViewType>DetailView</ViewType>
+  <ViewName>RMSM_RMM_MEETING_AGENDA_DETAIL_DOC_DetailView</ViewName>
+  <ViewTitle>แนบเอกสารประกอบ</ViewTitle>
+  <MasterPage />
+  <RootServiceUrl>output/service</RootServiceUrl>
+  <SQLInsert />
+  <SQLUpdate />
+  <SQLDelete />
+  <SQLSelect>SELECT RMSM_RMM_MEETING_AGENDA_DETAIL_DOC.DOC_TAG
+,RMSM_RMM_MEETING_AGENDA_DETAIL_DOC.DOC_LOGICAL_NAME
+,RMSM_RMM_MEETING_AGENDA_DETAIL_DOC.DOC_IMPORT_DATE
+,[OPM_COMMON_DATA].[dbo].[COMM_MDM_DOC_TYPE_INFO].DOC_TYPE_ID
+,[OPM_COMMON_DATA].[dbo].[COMM_MDM_DOC_TYPE_INFO].DOC_TYPE_NAME
+FROM [dbo].[RMSM_RMM_MEETING_AGENDA_DETAIL_DOC]
+LEFT JOIN [OPM_COMMON_DATA].[dbo].[COMM_MDM_DOC_TYPE_INFO] on
+[dbo].[RMSM_RMM_MEETING_AGENDA_DETAIL_DOC].DOC_TYPE_ID = [OPM_COMMON_DATA].[dbo].[COMM_MDM_DOC_TYPE_INFO].DOC_TYPE_ID
+WHERE AGENDA_DETAIL_DOC = @AGENDA_DETAIL_DOC</SQLSelect>
+  <SQLInsertParams />
+  <SQLUpdateParams />
+  <SQLDeleteParams />
+  <SQLSelectParams />
+  <InputParameters>RMSM_RMM_MEETING_AGENDA_DETAIL_DOC.AGENDA_DETAIL_DOC</InputParameters>
+  <FilterParameters />
+  <IsHasNewButton>false</IsHasNewButton>
+  <IsHasSaveButton>false</IsHasSaveButton>
+  <IsHasDeleteButton>false</IsHasDeleteButton>
+  <IsHasSubmitWf>false</IsHasSubmitWf>
+  <Items>
+    <ExcelUIViewDetailItem>
+      <RowNumber>18</RowNumber>
+      <ElementType>row</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>19</RowNumber>
+      <ElementType>col</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>1</Level>
+      <LevelValue>6</LevelValue>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>20</RowNumber>
+      <ElementType>attachment</ElementType>
+      <ElementId />
+      <Caption>แนบเอกสาร</Caption>
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding>RMSM_RMM_MEETING_AGENDA_DETAIL_DOC.DOC_TAG</DataBinding>
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>21</RowNumber>
+      <ElementType>label</ElementType>
+      <ElementId />
+      <Caption>รองรับ File .pdf, .jpeg, .doc, .docx, .xls, .xlsx, .ppt, .txt ขนาดไม่เกิน 5MB. </Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>22</RowNumber>
+      <ElementType>textbox</ElementType>
+      <ElementId />
+      <Caption>ชื่อเอกสาร</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption />
+      <DataBinding>RMSM_RMM_MEETING_AGENDA_DETAIL_DOC.DOC_LOGICAL_NAME</DataBinding>
+      <PlaceHolderName />
+      <Width>300</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>23</RowNumber>
+      <ElementType>textdis</ElementType>
+      <ElementId />
+      <Caption>วันที่นำเข้าเอกสาร</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption />
+      <DataBinding>RMSM_RMM_MEETING_AGENDA_DETAIL_DOC.DOC_IMPORT_DATE</DataBinding>
+      <PlaceHolderName />
+      <Width>300</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>24</RowNumber>
+      <ElementType>dropdown</ElementType>
+      <ElementId />
+      <Caption>ประเภทเอกสาร</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption />
+      <DataBinding>RMSM_RMM_MEETING_AGENDA_DETAIL_DOC.DOC_TYPE_ID</DataBinding>
+      <PlaceHolderName />
+      <Width>300</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>25</RowNumber>
+      <ElementType>endcol</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>26</RowNumber>
+      <ElementType>endrow</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+  </Items>
+</ExcelUIViewDetail>

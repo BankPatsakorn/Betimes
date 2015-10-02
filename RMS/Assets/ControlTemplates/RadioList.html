@@ -1,0 +1,39 @@
+﻿^EDIT 
+                <div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+                    <div class="col-sm-8">
+                        <dx:ASPxRadioButtonList 
+                            ID="ctl{fieldname}" runat="server" DataSourceID="{lkudatasourceid}"
+                            ValueField="{fieldtext}" TextField="{fieldvalue}" 
+                            RepeatColumns="4" RepeatLayout="Table">
+                        </dx:ASPxRadioButtonList>
+                     </div>
+                </div>
+
+^VIEW
+                <div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+                    <div class="col-sm-8">
+                        <dx:ASPxRadioButtonList 
+                            ID="ASPxRadioButtonList1" runat="server" DataSourceID="{datasourceid}"
+                            ValueField="{fieldtext}" TextField="{fieldvalue}" 
+                            SelectedIndex="{valueindex}"
+                            RepeatColumns="4" RepeatLayout="Table">
+                        </dx:ASPxRadioButtonList>
+                     </div>
+                </div>
+
+^EDITPOPULATECS
+        ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+^VIEWPOPULATECS
+        ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+^INSERTCS
+        if (ctl{fieldname}.Value != null)
+            {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.Int32, ctl{fieldname}.Value.ToString());
+        else
+            {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.Int32, null); 
+^UPDATECS
+        if (ctl{fieldname}.Value != null)
+            {datasourceid}.UpdateParameters.Add("{fieldname}", System.Data.DbType.Int32, ctl{fieldname}.Value.ToString());
+        else
+            {datasourceid}.UpdateParameters.Add("{fieldname}", System.Data.DbType.Int32, null); 

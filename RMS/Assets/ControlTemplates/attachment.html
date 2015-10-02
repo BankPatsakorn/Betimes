@@ -1,0 +1,49 @@
+﻿^EDIT 
+          <div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+                    <div class="col-sm-8">
+                        <asp:FileUpload ID="ctl{fieldname}" runat="server"   /><br />
+                        <asp:HyperLink ID="link{fieldname}" Visible="false" runat="server"></asp:HyperLink>
+                     </div>
+          </div>
+^VIEW
+<div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+<div class="col-sm-8">
+<dx:ASPxLabel ID="ctl{fieldname}"  runat="server" ></dx:ASPxLabel>
+    </div>
+    </div>
+^EDITPOPULATECS
+        if(drv["{fieldname}"].ToString()!=""){
+            link{fieldname}.Visible = true;
+            link{fieldname}.NavigateUrl = System.Configuration.ConfigurationManager.AppSettings["UploadUrl"] + "/" + drv["{fieldname}"].ToString();
+            link{fieldname}.Text = drv["{fieldname}"].ToString();
+        }
+^NEWPOPULATECS
+        link{fieldname}.Visible = false;
+^VIEWPOPULATECS
+        if(drv["{fieldname}"].ToString()!=""){
+            link{fieldname}.Visible = true;
+            link{fieldname}.NavigateUrl = System.Configuration.ConfigurationManager.AppSettings["UploadUrl"] + "/" + drv["{fieldname}"].ToString();
+            link{fieldname}.Text = drv["{fieldname}"].ToString();
+        }
+^INSERTCS
+        if (ctl{fieldname}.HasFile)
+        {
+            ctl{fieldname}.SaveAs(System.Configuration.ConfigurationManager.AppSettings["UploadPath"] + "\\" + ctl{fieldname}.FileName);
+            {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.String, ctl{fieldname}.FileName);
+        }
+        else
+        {
+            {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.String, "");
+        }
+^UPDATECS
+        if (ctl{fieldname}.HasFile)
+        {
+            ctl{fieldname}.SaveAs(System.Configuration.ConfigurationManager.AppSettings["UploadPath"] + "\\" + ctl{fieldname}.FileName);
+            {datasourceid}.UpdateParameters.Add("{fieldname}", System.Data.DbType.String, ctl{fieldname}.FileName);
+        }
+        else
+        {
+            //{datasourceid}.UpdateParameters.Add("{fieldname}", System.Data.DbType.String, "");
+        }

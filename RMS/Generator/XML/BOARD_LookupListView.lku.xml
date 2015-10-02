@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewLookup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_MDM_BOARD_MEMBER,BISM_MDM_BOARD_INFO,VIEW_PERSONAL</TableName>
+  <ViewType>LookupListView</ViewType>
+  <ViewName>BOARD_LookupListView</ViewName>
+  <ViewTitle>ข้อมูลคณะกรรมการ</ViewTitle>
+  <MasterPage />
+  <OrderBy>output/service</OrderBy>
+  <IsHasFilter>true</IsHasFilter>
+  <PageSize>20</PageSize>
+  <ReturnField />
+  <InputParameters />
+  <FilterParameters />
+  <FilterView />
+  <SQLSelect>SELECT [OPM_BIS].[dbo].[BISM_MDM_BOARD_INFO].[BOARD_ID]
+,[dbo].[RMSM_MDM_BOARD_MEMBER].BOARD_ID
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].OFFICER_ID
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].PREFIX_DESC
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].NAME
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].OFFICER_OPSITION_NAME
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].ORG
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].SECTION_NAME
+FROM [dbo].[RMSM_MDM_BOARD_MEMBER]
+LEFT JOIN [OPM_BIS].[dbo].[BISM_MDM_BOARD_INFO] on
+[dbo].[RMSM_MDM_BOARD_MEMBER].BOARD_ID = [OPM_BIS].[dbo].[BISM_MDM_BOARD_INFO].[BOARD_ID]
+LEFT JOIN [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL] on
+[OPM_BIS].[dbo].[BISM_MDM_BOARD_INFO].OFFICER_ID = [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].OFFICER_ID
+WHERE [dbo].[RMSM_MDM_BOARD_MEMBER].RECORD_STATUS = 'A'</SQLSelect>
+  <SQLSelectParams />
+  <Items>
+    <ExcelUIViewListItem>
+      <RowNumber>15</RowNumber>
+      <Caption>คำนำหน้า</Caption>
+      <DataBinding>PREFIX_DESC</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>16</RowNumber>
+      <Caption>ชื่อ-นามสกุล</Caption>
+      <DataBinding>NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>17</RowNumber>
+      <Caption>ตำแหน่งในสายงาน</Caption>
+      <DataBinding>OFFICER_OPSITION_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>18</RowNumber>
+      <Caption>สำนัก/กอง</Caption>
+      <DataBinding>ORG</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>19</RowNumber>
+      <Caption>กลุ่ม/ส่วน/ฝ่าย</Caption>
+      <DataBinding>SECTION_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+  </Items>
+</ExcelUIViewLookup>

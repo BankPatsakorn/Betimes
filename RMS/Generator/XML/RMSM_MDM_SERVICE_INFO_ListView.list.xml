@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_MDM_SERVICE_INFO,COMM_MDM_COUNT_UNIT_INFO</TableName>
+  <ViewType>ListView</ViewType>
+  <ViewName>RMSM_MDM_SERVICE_INFO_ListView</ViewName>
+  <ViewTitle>จัดการบริการการประชุม</ViewTitle>
+  <MasterPage />
+  <RootServiceUrl>output/service</RootServiceUrl>
+  <OrderBy />
+  <IsHasFilter>true</IsHasFilter>
+  <PageSize>20</PageSize>
+  <EditView>RMSM_MDM_SERVICE_INFO_DetailView</EditView>
+  <FilterView />
+  <InputParameters>RMSM_MDM_SERVICE_INFO.SERVICE_ID</InputParameters>
+  <FilterParameters />
+  <SQLInsert />
+  <SQLUpdate />
+  <SQLDelete />
+  <SQLSelect>SELECT [SERVICE_ID]
+,[SERVICE_NAME]
+,[OPM_COMMON_DATA].[dbo].[COMM_MDM_COUNT_UNIT_INFO].COUNT_UNIT_ID
+,[OPM_COMMON_DATA].[dbo].[COMM_MDM_COUNT_UNIT_INFO].COUNT_UNIT_NAME
+FROM [dbo].[RMSM_MDM_SERVICE_INFO]
+LEFT JOIN [OPM_COMMON_DATA].[dbo].[COMM_MDM_COUNT_UNIT_INFO] on
+[dbo].[RMSM_MDM_SERVICE_INFO].COUNT_UNIT_ID = [OPM_COMMON_DATA].[dbo].[COMM_MDM_COUNT_UNIT_INFO].COUNT_UNIT_ID
+WHERE [dbo].[RMSM_MDM_SERVICE_INFO].RECORD_STATUS = 'A'</SQLSelect>
+  <SQLInsertParams />
+  <SQLUpdateParams />
+  <SQLDeleteParams />
+  <SQLSelectParams />
+  <IsHasNewButton>false</IsHasNewButton>
+  <IsHasSaveButton>false</IsHasSaveButton>
+  <IsHasDeleteButton>false</IsHasDeleteButton>
+  <Items>
+    <ExcelUIViewListItem>
+      <RowNumber>22</RowNumber>
+      <Caption>บริการ</Caption>
+      <DataBinding>RMSM_MDM_SERVICE_INFO.SERVICE_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>23</RowNumber>
+      <Caption>หน่วยนับ</Caption>
+      <DataBinding>COMM_MDM_COUNT_UNIT_INFO.COUNT_UNIT_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+  </Items>
+</ExcelUIViewList>

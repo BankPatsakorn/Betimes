@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_MDM_ROOM_INFO</TableName>
+  <ViewType>DetailView</ViewType>
+  <ViewName>RMSM_MDM_ROOM_INFO_DetailView</ViewName>
+  <ViewTitle>จัดการห้องประชุม(RMS_UT0501)</ViewTitle>
+  <MasterPage />
+  <RootServiceUrl>output/service</RootServiceUrl>
+  <SQLInsert />
+  <SQLUpdate />
+  <SQLDelete />
+  <SQLSelect>SELECT RMSM_MDM_ROOM_INFO.ROOM_CODE
+,RMSM_MDM_ROOM_INFO.ROOM_NAME
+,RMSM_MDM_ROOM_INFO.ROOM_FLOOR
+,RMSM_MDM_ROOM_INFO.ROOM_STATUS
+,RMSM_MDM_ROOM_INFO.ROOM_CAPACITY
+,RMSM_MDM_ROOM_INFO.ROOM_MAPPING
+FROM [dbo].[RMSM_MDM_ROOM_INFO]
+WHERE ROOM_ID = @ROOM_ID</SQLSelect>
+  <SQLInsertParams />
+  <SQLUpdateParams />
+  <SQLDeleteParams />
+  <SQLSelectParams />
+  <InputParameters>RMSM_MDM_ROOM_INFO.ROOM_ID</InputParameters>
+  <FilterParameters />
+  <IsHasNewButton>false</IsHasNewButton>
+  <IsHasSaveButton>false</IsHasSaveButton>
+  <IsHasDeleteButton>false</IsHasDeleteButton>
+  <IsHasSubmitWf>false</IsHasSubmitWf>
+  <Items>
+    <ExcelUIViewDetailItem>
+      <RowNumber>18</RowNumber>
+      <ElementType>tab</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>19</RowNumber>
+      <ElementType>tabpage</ElementType>
+      <ElementId>tabpage1</ElementId>
+      <Caption>การจัดการห้องประชุม</Caption>
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>20</RowNumber>
+      <ElementType>row</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>21</RowNumber>
+      <ElementType>col</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>1</Level>
+      <LevelValue>6</LevelValue>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>22</RowNumber>
+      <ElementType>textdis</ElementType>
+      <ElementId />
+      <Caption>รหัสห้องประชุม</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption>inline</ShowCaption>
+      <DataBinding>RMSM_MDM_ROOM_INFO.ROOM_CODE</DataBinding>
+      <PlaceHolderName />
+      <Width>300</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>23</RowNumber>
+      <ElementType>textbox</ElementType>
+      <ElementId />
+      <Caption>ชื่อห้องประชุม*</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption>inline</ShowCaption>
+      <DataBinding>RMSM_MDM_ROOM_INFO.ROOM_NAME</DataBinding>
+      <PlaceHolderName />
+      <Width>300</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>24</RowNumber>
+      <ElementType>number</ElementType>
+      <ElementId />
+      <Caption>ชั้น</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption>inline</ShowCaption>
+      <DataBinding>RMSM_MDM_ROOM_INFO.ROOM_FLOOR</DataBinding>
+      <PlaceHolderName />
+      <Width>300</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>25</RowNumber>
+      <ElementType>radiolistfix</ElementType>
+      <ElementId />
+      <Caption>สถานะ</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption>inline</ShowCaption>
+      <DataBinding>RMSM_MDM_ROOM_INFO.ROOM_STATUS</DataBinding>
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle>1:ใช้การได้,2:เสีย,3:ปิดถาวร</CustomStyle>
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>26</RowNumber>
+      <ElementType>number</ElementType>
+      <ElementId />
+      <Caption>ความจุ*</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption>inline</ShowCaption>
+      <DataBinding>RMSM_MDM_ROOM_INFO.ROOM_CAPACITY</DataBinding>
+      <PlaceHolderName />
+      <Width>300</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>27</RowNumber>
+      <ElementType>attachment</ElementType>
+      <ElementId />
+      <Caption>รูป</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption>inline</ShowCaption>
+      <DataBinding>RMSM_MDM_ROOM_INFO.ROOM_MAPPING</DataBinding>
+      <PlaceHolderName />
+      <Width>300</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>28</RowNumber>
+      <ElementType>label</ElementType>
+      <ElementId />
+      <Caption>รองรับ File .pdf, .jpeg, .png ขนาดไม่เกิน 5MB. </Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>29</RowNumber>
+      <ElementType>endcol</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>30</RowNumber>
+      <ElementType>endrow</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>31</RowNumber>
+      <ElementType>endtabpage</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>32</RowNumber>
+      <ElementType>tabpage</ElementType>
+      <ElementId>tabpage2</ElementId>
+      <Caption>โสตทัศนูปกรณ์</Caption>
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>33</RowNumber>
+      <ElementType>button</ElementType>
+      <ElementId />
+      <Caption>เพิ่มโสตทัศนูปกรณ์</Caption>
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>34</RowNumber>
+      <ElementType>listview</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>4</Level>
+      <LevelValue>RMSM_MDM_EQUIPMENT_INFO_ListView</LevelValue>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>35</RowNumber>
+      <ElementType>endtabpage</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>36</RowNumber>
+      <ElementType>tabpage</ElementType>
+      <ElementId>tabpage3</ElementId>
+      <Caption>บริการการประชุม</Caption>
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>37</RowNumber>
+      <ElementType>button</ElementType>
+      <ElementId />
+      <Caption>เพิ่มบริการการประชุม</Caption>
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>38</RowNumber>
+      <ElementType>listview</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>4</Level>
+      <LevelValue>RMSM_MDM_SERVICE_INFO_ListView</LevelValue>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>39</RowNumber>
+      <ElementType>endtabpage</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>40</RowNumber>
+      <ElementType>tabpage</ElementType>
+      <ElementId>tabpage4</ElementId>
+      <Caption>ผู้ดูแลห้องประชุม</Caption>
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>41</RowNumber>
+      <ElementType>button</ElementType>
+      <ElementId />
+      <Caption>เพิ่มผู้ดูแลห้องประชุม</Caption>
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>42</RowNumber>
+      <ElementType>listview</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>4</Level>
+      <LevelValue>RMSM_MDM_ADMIN_INFO_ListView</LevelValue>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>43</RowNumber>
+      <ElementType>endtabpage</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>44</RowNumber>
+      <ElementType>endtab</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+  </Items>
+</ExcelUIViewDetail>

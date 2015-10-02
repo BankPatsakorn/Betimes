@@ -1,0 +1,121 @@
+﻿<%@ WebHandler Language="C#" Class="svcRoomSave" %>
+
+using System;
+using System.Web;
+using System.Collections;
+public class svcRoomSave : IHttpHandler, System.Web.SessionState.IRequiresSessionState
+{
+    
+    public void ProcessRequest (HttpContext context) {
+        User user = (User)context.Session["user"];
+        string start = context.Request.QueryString["start"];
+        string end = context.Request.QueryString["end"];
+        string id = context.Request.QueryString["id"];
+        string location = context.Request.QueryString["location"];
+        string roomname = context.Request.QueryString["roomname"];
+        string workgroup_id = context.Request.QueryString["workgroup"];
+        string strReturn = string.Empty;
+        string CheckDupRoom = "0";
+        
+        if (CheckDupRoom == "0")
+        {
+            string[] arr1 = start.Split('T');
+            string[] arr2 = end.Split('T');
+            string startTime = string.Empty, endTime = string.Empty;
+            if (arr1.Length == 2)
+            {
+                start = arr1[0];
+                startTime = arr1[1].Replace(':', '.');
+            }
+            if (arr2.Length == 2)
+            {
+                endTime = arr2[1].Replace(':', '.');
+            }
+
+            if (string.IsNullOrEmpty(id) || id == "0")
+            {
+                ArrayList list = getDate(arr1[0], arr2[0]);
+                if (list.Count > 0)
+                {
+                  //  end = list[list.Count - 1].ToString();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        start = list[i].ToString();
+                        
+                        string sql = string.Format("EXEC [dbo].[SP_SAVE_MEETING_PERIOD_TEMP] '{0}', {1}, '{2}', '{3}', '{4}', '{5}', {6}, '{7}';",
+                                        user.SESSION_ID, location, start, startTime, start, endTime, workgroup_id, user.USER_NAME);
+                        (new mainClass()).ExecNonQuery(sql);
+                    }
+                }
+                
+                
+            }
+            else
+            {
+                string sql = string.Format("EXEC [dbo].[SAVE_TO_MEETING_PERIOD] {0}, {1}, '{2}', '{3}', '{4}', '{5}', '{6}';",
+                                        id, location, start, startTime, end, endTime, user.USER_NAME);
+                (new mainClass()).ExecNonQuery(sql);
+            }
+            
+            strReturn = "Location and Meeting Time have been Saved.";
+        }
+        else
+        {
+            strReturn = "False";
+        }
+
+        context.Response.ContentType = "text/plain";
+        context.Response.Write(strReturn);
+    }
+ 
+    public bool IsReusable {
+        get {
+            return false;
+        }
+    }
+
+
+    private ArrayList getDate(string dateFirst,string dateLast)
+    {
+        DateTime fDate = DateTime.Parse(dateFirst);
+        DateTime lDate = DateTime.Parse(dateLast);
+
+        TimeSpan timeDiff = lDate - fDate;
+        // var diffDays = Math.Ceiling(timeDiff / (1000 * 3600 * 24));
+
+        double diffDays = timeDiff.TotalDays;
+
+        ArrayList arrHtml = new ArrayList(); //arrHtml;
+
+        for (var i = 0; i <= diffDays; i++)
+        {
+            DateTime date3 = fDate;//new DateTime(fDate);
+
+            //date3 =date1.getDate() + i)
+            date3 = fDate.AddDays(i);
+            //date3.
+            //2015-07-23
+            // arrHtml.('<div>');
+
+            arrHtml.Add(date3.Year.ToString() + '-' + date3.Month + '-' + date3.Day.ToString());
+            // // arrHtml.push(date3.getFullYear());
+            ////  arrHtml.push('-');
+            //  if ((date3.Month + 1) < 10) {
+            //      arrHtml.Add('0' + (date3.Month + 1));
+            //  } else {
+            //      arrHtml.Add(date3.Month + 1);
+            //  }
+            // // arrHtml.push('-');
+            //  if (date3.Day < 10) {
+            //      arrHtml.Add('0' + date3.Day);
+            //  } else {
+            //      arrHtml.Add(date3.Day);
+            //  }
+
+            // arrHtml.push('<a href="javascript:;" onclick="removeTag(this);"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>');
+            // arrHtml.push('</div>');
+        }
+        return arrHtml;
+
+    }
+}

@@ -1,0 +1,21 @@
+﻿^EDIT 
+<div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+                    <div class="col-sm-8">
+<dx:ASPxMemo ID="ctl{fieldname}" runat="server" 
+        Width="{width}" Height="100" >
+    </dx:ASPxMemo>
+                         </div>
+    </div>
+^VIEW
+<dx:ASPxLabel ID="ctl{fieldname}" runat="server" Text="{value}"></dx:ASPxLabel>
+^EDITPOPULATECS
+        ctl{fieldname}.Text = drv["{fieldname}"].ToString();
+^NEWPOPULATECS
+        ctl{fieldname}.Text = "";
+^VIEWPOPULATECS
+        ctl{fieldname}.Text = drv["{fieldname}"].ToString();
+^INSERTCS
+        {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.String, ctl{fieldname}.Text);
+^UPDATECS
+        {datasourceid}.UpdateParameters.Add("{fieldname}", System.Data.DbType.String, ctl{fieldname}.Text);

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_RMM_MEETING,VIEW_PERSONAL,RMSM_MDM_ROOM_INFO</TableName>
+  <ViewType>ListView</ViewType>
+  <ViewName>RMSM_RMM_MEETING_CANCLE_ListView</ViewName>
+  <ViewTitle>แก้ไข/ยกเลิกการจองห้องประชุม</ViewTitle>
+  <MasterPage />
+  <RootServiceUrl>output/service</RootServiceUrl>
+  <OrderBy />
+  <IsHasFilter>true</IsHasFilter>
+  <PageSize>20</PageSize>
+  <EditView>RMSM_RMM_MEETING_CANCLE_DetailView</EditView>
+  <FilterView />
+  <InputParameters>RMSM_RMM_MEETING.MEETING_ID</InputParameters>
+  <FilterParameters />
+  <SQLInsert />
+  <SQLUpdate />
+  <SQLDelete />
+  <SQLSelect>SELECT [MEETING_ID]
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].OFFICER_ID
+,[RMSM_MDM_ROOM_INFO].ROOM_ID
+,[MEETING_CODE]
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].NAME
+,convert(varchar,[MEETING_REQUEST_START_DATE],103)+' - '+convert(varchar,[MEETING_REQUEST_END_DATE],103) as MEETING_DATE
+,[dbo].[RMSM_MDM_ROOM_INFO].ROOM_NAME
+FROM [dbo].[RMSM_RMM_MEETING]
+LEFT JOIN  [dbo].[RMSM_MDM_ROOM_INFO] on
+[dbo].[RMSM_RMM_MEETING].ROOM_ID = [dbo].[RMSM_MDM_ROOM_INFO].ROOM_ID
+LEFT JOIN [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL] on
+[dbo].[RMSM_RMM_MEETING].[MEETING_REQUEST_OFFICER] = [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].OFFICER_ID
+WHERE [dbo].[RMSM_RMM_MEETING].RECORD_STATUS = 'A'</SQLSelect>
+  <SQLInsertParams />
+  <SQLUpdateParams />
+  <SQLDeleteParams />
+  <SQLSelectParams />
+  <IsHasNewButton>false</IsHasNewButton>
+  <IsHasSaveButton>false</IsHasSaveButton>
+  <IsHasDeleteButton>false</IsHasDeleteButton>
+  <Items>
+    <ExcelUIViewListItem>
+      <RowNumber>22</RowNumber>
+      <Caption>รหัสการจองห้องประชุม</Caption>
+      <DataBinding>MEETING_CODE</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>23</RowNumber>
+      <Caption>ผู้จองห้องประชุม</Caption>
+      <DataBinding>VIEW_PERSONAL.NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>24</RowNumber>
+      <Caption>วันที่จองห้องประชุม</Caption>
+      <DataBinding>MEETING_DATE</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>25</RowNumber>
+      <Caption>ห้องประชุม</Caption>
+      <DataBinding>RMSM_MDM_ROOM_INFO.ROOM_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+  </Items>
+</ExcelUIViewList>

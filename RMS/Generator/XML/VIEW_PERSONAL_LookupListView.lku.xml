@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewLookup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>VIEW_PERSONAL</TableName>
+  <ViewType>LookupListView</ViewType>
+  <ViewName>VIEW_PERSONAL_LookupListView</ViewName>
+  <ViewTitle>ข้อมูลบุคลากร</ViewTitle>
+  <MasterPage />
+  <OrderBy>output/service</OrderBy>
+  <IsHasFilter>true</IsHasFilter>
+  <PageSize>20</PageSize>
+  <ReturnField />
+  <InputParameters />
+  <FilterParameters />
+  <FilterView />
+  <SQLSelect>SELECT[PREFIX_ID]
+      ,[PREFIX_DESC]
+      ,[OFFICER_ID]
+      ,[NAME]
+      ,[OFFICER_OPSITION_NAME]
+      ,[UNIT_ID]
+      ,[ORG]
+      ,[SECTION_ID]
+      ,[SECTION_NAME]
+  FROM [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL]</SQLSelect>
+  <SQLSelectParams />
+  <Items>
+    <ExcelUIViewListItem>
+      <RowNumber>15</RowNumber>
+      <Caption>คำนำหน้า</Caption>
+      <DataBinding>PREFIX_DESC</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>16</RowNumber>
+      <Caption>ชื่อ-นามสกุล</Caption>
+      <DataBinding>NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>17</RowNumber>
+      <Caption>ตำแหน่งในสายงาน</Caption>
+      <DataBinding>OFFICER_OPSITION_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>18</RowNumber>
+      <Caption>สำนัก/กอง</Caption>
+      <DataBinding>ORG</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>19</RowNumber>
+      <Caption>กลุ่ม/ส่วน/ฝ่าย</Caption>
+      <DataBinding>SECTION_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+  </Items>
+</ExcelUIViewLookup>

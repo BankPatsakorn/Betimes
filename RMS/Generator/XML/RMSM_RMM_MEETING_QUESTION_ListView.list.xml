@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_RMM_MEETING,RMSM_MDM_ROOM_INFO,RMSM_MDM_BOARD_MEMBER,BISM_MDM_BOARD_INFO,VIEW_PERSONAL</TableName>
+  <ViewType>ListView</ViewType>
+  <ViewName>RMSM_RMM_MEETING_QUESTION_ListView</ViewName>
+  <ViewTitle>สอบถามเรื่องที่ประชุม</ViewTitle>
+  <MasterPage />
+  <RootServiceUrl>output/service</RootServiceUrl>
+  <OrderBy />
+  <IsHasFilter>true</IsHasFilter>
+  <PageSize>20</PageSize>
+  <EditView>RMSM_RMM_MEETING_QUESTION_DetailView</EditView>
+  <FilterView />
+  <InputParameters>RMSM_RMM_MEETING.MEETING_ID</InputParameters>
+  <FilterParameters />
+  <SQLInsert />
+  <SQLUpdate />
+  <SQLDelete />
+  <SQLSelect>SELECT [dbo].[RMSM_RMM_MEETING].MEETING_ID
+,[dbo].[RMSM_MDM_ROOM_INFO].[ROOM_ID]
+,[ROOM_NAME]
+,[MEETING_SUBJECT]
+,[dbo].[RMSM_MDM_BOARD_MEMBER].[BOARD_ID]
+,[OPM_BIS].[dbo].[BISM_MDM_BOARD_INFO].BOARD_ID
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].NAME
+,CONVERT(varchar,[MEETING_REQUEST_START_DATE],110)+'/'+CONVERT(varchar,[MEETING_REQUEST_START_TIME])+'-'+CONVERT(varchar,[MEETING_REQUEST_END_TIME]) as DATE_TIME
+FROM [dbo].[RMSM_RMM_MEETING]
+LEFT JOIN [dbo].[RMSM_MDM_ROOM_INFO] on
+[dbo].[RMSM_RMM_MEETING].ROOM_ID = [dbo].[RMSM_MDM_ROOM_INFO].ROOM_ID
+LEFT JOIN [dbo].[RMSM_MDM_BOARD_MEMBER] on
+[dbo].[RMSM_RMM_MEETING].BOARD_ID = [dbo].[RMSM_MDM_BOARD_MEMBER].BOARD_ID
+LEFT JOIN [OPM_BIS].[dbo].[BISM_MDM_BOARD_INFO] on
+[dbo].[RMSM_MDM_BOARD_MEMBER].BOARD_ID = [OPM_BIS].[dbo].[BISM_MDM_BOARD_INFO].BOARD_ID
+LEFT JOIN [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL] on
+[OPM_BIS].[dbo].[BISM_MDM_BOARD_INFO].OFFICER_ID = [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].OFFICER_ID
+WHERE [dbo].[RMSM_RMM_MEETING].RECORD_STATUS = 'A'</SQLSelect>
+  <SQLInsertParams />
+  <SQLUpdateParams />
+  <SQLDeleteParams />
+  <SQLSelectParams />
+  <IsHasNewButton>false</IsHasNewButton>
+  <IsHasSaveButton>false</IsHasSaveButton>
+  <IsHasDeleteButton>false</IsHasDeleteButton>
+  <Items>
+    <ExcelUIViewListItem>
+      <RowNumber>22</RowNumber>
+      <Caption>ห้องประชุม</Caption>
+      <DataBinding>ROOM_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>23</RowNumber>
+      <Caption>ชื่อหัวข้อ/ชื่อเรื่อง</Caption>
+      <DataBinding>MEETING_SUBJECT</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>24</RowNumber>
+      <Caption>คณะที่ประชุม</Caption>
+      <DataBinding>NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>25</RowNumber>
+      <Caption>วันที่ประชุม</Caption>
+      <DataBinding>DATE_TIME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+  </Items>
+</ExcelUIViewList>

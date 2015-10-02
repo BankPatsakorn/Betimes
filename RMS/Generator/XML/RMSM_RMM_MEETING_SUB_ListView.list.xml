@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_RMM_MEETING_AGENDA_SUB</TableName>
+  <ViewType>ListView</ViewType>
+  <ViewName>RMSM_RMM_MEETING_SUB_ListView</ViewName>
+  <ViewTitle />
+  <MasterPage />
+  <RootServiceUrl>output/service</RootServiceUrl>
+  <OrderBy />
+  <IsHasFilter>true</IsHasFilter>
+  <PageSize>20</PageSize>
+  <EditView>RMSM_RMM_MEETING_SUB_DetailView</EditView>
+  <FilterView />
+  <InputParameters>RMSM_RMM_MEETING_AGENDA_SUB.AGENDA_SUB_ID</InputParameters>
+  <FilterParameters />
+  <SQLInsert />
+  <SQLUpdate />
+  <SQLDelete />
+  <SQLSelect>SELECT RMSM_RMM_MEETING_AGENDA_SUB.AGENDA_SUB_ID ,RMSM_RMM_MEETING_AGENDA_SUB.AGENDA_SUB_SEQ
+,RMSM_RMM_MEETING_AGENDA_SUB.AGENDA_SUB_TOPIC
+,RMSM_RMM_MEETING_AGENDA_SUB.AGENDA_SUB_DESC
+,RMSM_RMM_MEETING_AGENDA_SUB.AGENDA_SUB_BOARD
+FROM [dbo].[RMSM_RMM_MEETING_AGENDA_SUB]</SQLSelect>
+  <SQLInsertParams />
+  <SQLUpdateParams />
+  <SQLDeleteParams />
+  <SQLSelectParams />
+  <IsHasNewButton>false</IsHasNewButton>
+  <IsHasSaveButton>false</IsHasSaveButton>
+  <IsHasDeleteButton>false</IsHasDeleteButton>
+  <Items>
+    <ExcelUIViewListItem>
+      <RowNumber>22</RowNumber>
+      <Caption>ระเบียบวาระที่</Caption>
+      <DataBinding>RMSM_RMM_MEETING_AGENDA_SUB.AGENDA_SUB_SEQ</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>23</RowNumber>
+      <Caption>เรื่อง</Caption>
+      <DataBinding>RMSM_RMM_MEETING_AGENDA_SUB.AGENDA_SUB_TOPIC</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+  </Items>
+</ExcelUIViewList>

@@ -1,0 +1,83 @@
+<%@ Page Title="" UICulture="th" Culture="th-TH" Language="C#" MasterPageFile="~/Assets/ControlTemplates/MasterPageLayout.master" AutoEventWireup="true" CodeFile="WebForm.aspx.cs" Inherits="Assets_ControlTemplates_WebForm" %>
+
+<%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v14.1, Version=14.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.ASPxSpellChecker.v14.1, Version=14.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxSpellChecker" tagprefix="dx" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+            .dis-ctl {
+               background-color:#DDDDDD;
+            }
+            .control-label {
+               width:150px;
+               height: 30px;
+            }
+
+</style>
+    <script type="text/javascript">
+		var lkuValueId="";
+		var lkuLabelId="";
+		var selectedPopupView;
+        $(document).ready(function () {
+            $('.fancyBox').fancybox({
+                'type': 'iframe',
+                'width': 900,
+                'height': 500,
+                onClosed: function () {
+                    //location.reload();
+					selectedPopupView.Refresh();
+                }
+            });
+			$('.fancyBoxLku').fancybox({
+                'type': 'iframe',
+                'width': 900,
+                'height': 500,
+                onClosed: function () {
+                    
+                }
+            });
+
+			<%=JS %>
+        });
+
+        function ClientValidation() {
+            return ASPxClientEdit.ValidateGroup("");
+        }
+
+		function OpenLku(id, href, valId, lblId) {
+			lkuValueId = valId;
+			lkuLabelId = lblId;
+            $("#" + id).attr("href", href);
+            $("#" + id).click();
+        }
+		function SetLku(val, label) {
+            $("#" + lkuValueId).val(val);
+            $("#" + lkuLabelId).val(label);
+        }
+
+        function OpenChildDetail(id, href, viewName) {
+            $("#" + id).attr("href", href);
+            $("#" + id).click();
+			selectedPopupView=viewName;
+        }
+    </script>
+    {head}
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:ScriptManager ID="ScriptManager" runat="server" />
+     <div class="form-group col-sm-12" style="margin-top: 20px;">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-success btn-80" OnClientClick="return ClientValidation();" OnClick="btnSave_Click" />
+                        <asp:Button ID="btnBack" runat="server" Text="Back" CssClass="btn btn-warning btn-80" OnClick="btnBack_Click" />
+                    </div>
+     </div>
+    {content}
+</asp:Content>
+

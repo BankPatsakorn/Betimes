@@ -1,0 +1,51 @@
+﻿^EDIT
+<div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+                    <div class="col-sm-8">
+                        <asp:UpdatePanel ID="UpdatePanel{fieldname}" runat="server">
+                        <contenttemplate>
+                            <dx:ASPxDateEdit ID="ctl{fieldname}" Height="30"  AutoPostBack="true" DisplayFormatString="d MMM yyyy"  runat="server" EditFormat="Custom" Width="{width}">
+                            </dx:ASPxDateEdit>
+                          </contenttemplate>
+                         </asp:UpdatePanel>
+                        </div>
+    </div>
+^VIEW
+<div ID="Div1" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+                    <div class="col-sm-8">
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <contenttemplate>
+                            <dx:ASPxDateEdit ID="ASPxDateEdit1"  AutoPostBack="true"  runat="server" EditFormat="Custom" Width="{width}">
+                               <TimeSectionProperties>
+                                 <TimeEditProperties EditFormatString="hh:mm tt" />
+                               </TimeSectionProperties>
+                            </dx:ASPxDateEdit>
+                          </contenttemplate>
+                         </asp:UpdatePanel>
+                        </div>
+    </div>
+^EDITPOPULATECS
+        if (drv["{fieldname}"] != null && drv["{fieldname}"] != DBNull.Value)
+            ctl{fieldname}.Date = (DateTime)drv["{fieldname}"];
+^VIEWPOPULATECS
+        if (drv["{fieldname}"] != null && drv["{fieldname}"] != DBNull.Value)
+            ctl{fieldname}.Date = (DateTime)drv["{fieldname}"];
+^INSERTCS
+        if (ctl{fieldname}.Date.ToString("yyyy-MM-dd", ct_en) != "0001-01-01"){
+            {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.String, ctl{fieldname}.Date.ToString("yyyy-MM-dd", ct_en));
+        }
+        else
+        {
+            var p = new Parameter() { Name = "{fieldname}", DbType = System.Data.DbType.DateTime, DefaultValue = string.Empty, ConvertEmptyStringToNull = true };
+            {datasourceid}.InsertParameters.Add(p);
+        }
+^UPDATECS
+        if (ctl{fieldname}.Date.ToString("yyyy-MM-dd", ct_en) != "0001-01-01"){
+            {datasourceid}.UpdateParameters.Add("{fieldname}", System.Data.DbType.String, ctl{fieldname}.Date.ToString("yyyy-MM-dd", ct_en));
+        }
+        else
+        {
+            var p = new Parameter() { Name = "{fieldname}", DbType = System.Data.DbType.DateTime, DefaultValue = string.Empty, ConvertEmptyStringToNull = true };
+            {datasourceid}.UpdateParameters.Add(p);
+        }

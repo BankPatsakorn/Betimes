@@ -1,0 +1,25 @@
+﻿^EDIT 
+<div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">&nbsp;</label>
+                    <div class="col-sm-8">
+<dx:ASPxCheckBox ID="ctl{fieldname}"  runat="server"></dx:ASPxCheckBox> {caption}
+                        </div>
+    </div>
+^VIEW
+<div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+<div class="col-sm-8">
+<dx:ASPxCheckBox ID="ctl{fieldname}" CssClass="form-control" runat="server" ></dx:ASPxCheckBox>
+    </div>
+    </div>
+^EDITPOPULATECS
+        if(drv["{fieldname}"] != DBNull.Value)
+            ctl{fieldname}.Checked = Convert.ToBoolean(drv["{fieldname}"].ToString());
+^NEWPOPULATECS
+        
+^VIEWPOPULATECS
+        //ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+^INSERTCS
+        {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.Boolean, ctl{fieldname}.Checked.ToString());
+^UPDATECS
+        {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.Boolean, ctl{fieldname}.Checked.ToString());

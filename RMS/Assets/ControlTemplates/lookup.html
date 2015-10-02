@@ -1,0 +1,35 @@
+﻿^EDIT 
+<div ID="{fieldname}" class="form-group col-sm-12">
+    <label for="" class="col-sm-4 control-label">{caption}:</label>
+    <div class="col-sm-8">
+        <div class="input-group">
+            <asp:HiddenField ID="ctl{fieldname}" runat="server" ></asp:HiddenField>
+            <dx:ASPxTextBox ID="ctl{fieldname}_label" Width="100%" Height="30"
+    runat="server"></dx:ASPxTextBox>
+            <span class="input-group-btn">
+                  <button id="btn{fieldname}" class="btn btn-primary" style="width:30px;height:30px"
+                     onclick="OpenLku('lku{fieldname}', '{value}.aspx', 'ContentPlaceHolder1_ctl{fieldname}', 'ContentPlaceHolder1_ctl{fieldname}_label_I')"  type="button">
+                     <span class="glyphicon glyphicon-search" style="margin-left:-5px"></span></button>
+            </span>
+        </div>
+    </div>
+</div>
+<a id="lku{fieldname}" href="#" class="fancyBoxLku" style="display:none"></a>
+^VIEW
+<div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+<div class="col-sm-8">
+<dx:ASPxLabel ID="ctl{fieldname}" CssClass="form-control" runat="server" ></dx:ASPxLabel>
+    </div>
+    </div>
+^EDITPOPULATECS
+        ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+        ctl{fieldname}_label.Text = drv["{fieldtext}"].ToString();
+^NEWPOPULATECS
+        ctl{fieldname}.Value = "";
+^VIEWPOPULATECS
+        ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+^INSERTCS
+        {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.String, ctl{fieldname}.Value);
+^UPDATECS
+        {datasourceid}.UpdateParameters.Add("{fieldname}", System.Data.DbType.String, ctl{fieldname}.Value);

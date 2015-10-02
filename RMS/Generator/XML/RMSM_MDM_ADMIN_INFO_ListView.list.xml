@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_MDM_ADMIN_INFO,COMM_MDM_PREFIX_INFO,RMSM_MDM_ROOM_INFO,VIEW_ORGANIZE</TableName>
+  <ViewType>ListView</ViewType>
+  <ViewName>RMSM_MDM_ADMIN_INFO_ListView</ViewName>
+  <ViewTitle>ผู้ดูแลห้องประชุม(RMS_UT0506) </ViewTitle>
+  <MasterPage />
+  <RootServiceUrl>output/service</RootServiceUrl>
+  <OrderBy />
+  <IsHasFilter>true</IsHasFilter>
+  <PageSize>20</PageSize>
+  <EditView>RMSM_MDM_ADMIN_INFO_DetailView</EditView>
+  <FilterView />
+  <InputParameters>RMSM_MDM_ADMIN_INFO.ADMIN_ID</InputParameters>
+  <FilterParameters />
+  <SQLInsert />
+  <SQLUpdate />
+  <SQLDelete />
+  <SQLSelect>SELECT DISTINCT [dbo].[RMSM_MDM_ADMIN_INFO].ADMIN_ID
+,[dbo].[RMSM_MDM_ROOM_INFO].ROOM_CODE
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].[PREFIX_DESC]+[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].NAME as NAME
+,[UNIT_NAME]
+,[ROOM_NAME]
+FROM [dbo].[RMSM_MDM_ADMIN_INFO]
+LEFT JOIN [dbo].[RMSM_MDM_ROOM_INFO] on
+[dbo].[RMSM_MDM_ADMIN_INFO].ADMIN_ID = [dbo].[RMSM_MDM_ROOM_INFO].ADMIN_ID
+LEFT JOIN [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL] on
+[dbo].[RMSM_MDM_ADMIN_INFO].OFFICER_ID = [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].OFFICER_ID
+LEFT JOIN [OPM_COMMON_DATA].[dbo].[VIEW_ORGANIZE]on
+[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].UNIT_ID = [OPM_COMMON_DATA].[dbo].[VIEW_ORGANIZE].[UNIT_ID]
+WHERE [dbo].[RMSM_MDM_ADMIN_INFO].RECORD_STATUS = 'A'
+
+</SQLSelect>
+  <SQLInsertParams />
+  <SQLUpdateParams />
+  <SQLDeleteParams />
+  <SQLSelectParams />
+  <IsHasNewButton>false</IsHasNewButton>
+  <IsHasSaveButton>false</IsHasSaveButton>
+  <IsHasDeleteButton>false</IsHasDeleteButton>
+  <Items>
+    <ExcelUIViewListItem>
+      <RowNumber>22</RowNumber>
+      <Caption>รหัสห้องประชุม</Caption>
+      <DataBinding>RMSM_MDM_ROOM_INFO.ROOM_CODE</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>23</RowNumber>
+      <Caption>ชื่อผู้ดูแลห้องประชุม</Caption>
+      <DataBinding>NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>24</RowNumber>
+      <Caption>หน่วยงาน</Caption>
+      <DataBinding>VIEW_ORGANIZE.UNIT_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>25</RowNumber>
+      <Caption>ชื่อห้องประชุม</Caption>
+      <DataBinding>RMSM_MDM_ROOM_INFO.ROOM_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+  </Items>
+</ExcelUIViewList>

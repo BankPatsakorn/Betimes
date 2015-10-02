@@ -1,0 +1,33 @@
+﻿^EDIT 
+<div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+                    <div class="col-sm-8">
+<dx:ASPxComboBox 
+    ID="ctl{fieldname}"  runat="server" 
+    DropDownStyle="DropDown"   Height="30"
+    DataSourceID="{lkudatasourceid}" 
+    TextField="{fieldtext}" ValueField="{fieldvalue}"
+    Width="100%" IncrementalFilteringMode = "StartsWith" />
+                         </div>
+    </div>
+^VIEW
+<dx:ASPxComboBox 
+    ID="ctl{fieldname}"  runat="server" 
+    DropDownStyle="DropDown"  CssClass="form-control"
+    DataSourceID="{lkudatasourceid}" 
+    TextField="{fieldtext}" ValueField="{fieldvalue}"
+    Width="100%" IncrementalFilteringMode = "StartsWith" />
+^EDITPOPULATECS
+        ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+^VIEWPOPULATECS
+        ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+^INSERTCS
+        if (ctl{fieldname}.Value != null)
+            {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.Int32, ctl{fieldname}.Value.ToString());
+        else
+            {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.Int32, null); 
+^UPDATECS
+        if (ctl{fieldname}.Value != null)
+            {datasourceid}.UpdateParameters.Add("{fieldname}", System.Data.DbType.Int32, ctl{fieldname}.Value.ToString());
+        else
+            {datasourceid}.UpdateParameters.Add("{fieldname}", System.Data.DbType.Int32, null); 

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_RMM_MEETING_MEMBER,VIEW_PERSONAL,RMSM_MDM_MEETING_POSITION_INFO,RMSM_MDM_MEETING_STATUS_INFO</TableName>
+  <ViewType>ListView</ViewType>
+  <ViewName>RMSM_RMM_MEETING_MEMBER_MANAGER_ListView</ViewName>
+  <ViewTitle>ผู้บริหาร สปน.</ViewTitle>
+  <MasterPage />
+  <RootServiceUrl>output/service</RootServiceUrl>
+  <OrderBy />
+  <IsHasFilter>true</IsHasFilter>
+  <PageSize>20</PageSize>
+  <EditView>RMSM_RMM_MEETING_MEMBER_MANAGER_DetailView</EditView>
+  <FilterView />
+  <InputParameters>RMSM_RMM_MEETING_MEMBER.MEETING_MEMBER_ID</InputParameters>
+  <FilterParameters />
+  <SQLInsert />
+  <SQLUpdate />
+  <SQLDelete />
+  <SQLSelect>SELECT [dbo].[RMSM_RMM_MEETING_MEMBER].MEETING_MEMBER_ID
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].OFFICER_ID
+,[dbo].[RMSM_MDM_MEETING_POSITION_INFO].[MEETING_POSITION_ID]
+,[dbo].[RMSM_MDM_MEETING_STATUS_INFO].[MEETING_STATUS_ID]
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].NAME
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].OFFICER_OPSITION_NAME
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].ORG
+,[dbo].[RMSM_MDM_MEETING_POSITION_INFO].[MEETING_POSITION_NAME]
+,case when[dbo].[RMSM_RMM_MEETING_MEMBER].MEETING_MEMBER_TYPE = 0 then 'ผู้บริหาร สปน.' 
+ when[dbo].[RMSM_RMM_MEETING_MEMBER].MEETING_MEMBER_TYPE = 1 then 'บุลลคภายใน สปน.' 
+ when[dbo].[RMSM_RMM_MEETING_MEMBER].MEETING_MEMBER_TYPE = 2 then 'บุลลคภายนอก สปน.' end as MEETING_MEMBER_TYPE
+,[dbo].[RMSM_MDM_MEETING_STATUS_INFO].MEETING_STATUS_NAME
+FROM [dbo].[RMSM_RMM_MEETING_MEMBER]
+LEFT JOIN [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL] on
+[dbo].[RMSM_RMM_MEETING_MEMBER].MEMBER_OWNER_OFFICER_ID = [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].OFFICER_ID
+LEFT JOIN [dbo].[RMSM_MDM_MEETING_POSITION_INFO] on
+[dbo].[RMSM_RMM_MEETING_MEMBER].MEETING_POSITION_ID = [dbo].[RMSM_MDM_MEETING_POSITION_INFO].[MEETING_POSITION_ID]
+LEFT JOIN [dbo].[RMSM_MDM_MEETING_STATUS_INFO] on
+[dbo].[RMSM_RMM_MEETING_MEMBER].MEETING_MEMBER_STATUS = [dbo].[RMSM_MDM_MEETING_STATUS_INFO].[MEETING_STATUS_ID]
+WHERE [dbo].[RMSM_RMM_MEETING_MEMBER].RECORD_STATUS = 'A' </SQLSelect>
+  <SQLInsertParams />
+  <SQLUpdateParams />
+  <SQLDeleteParams />
+  <SQLSelectParams />
+  <IsHasNewButton>false</IsHasNewButton>
+  <IsHasSaveButton>false</IsHasSaveButton>
+  <IsHasDeleteButton>false</IsHasDeleteButton>
+  <Items>
+    <ExcelUIViewListItem>
+      <RowNumber>22</RowNumber>
+      <Caption>ชื่อ-นามสกุล</Caption>
+      <DataBinding>VIEW_PERSONAL.NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>23</RowNumber>
+      <Caption>ตำแหน่ง</Caption>
+      <DataBinding>VIEW_PERSONAL.OFFICER_OPSITION_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>24</RowNumber>
+      <Caption>หน่วยงาน</Caption>
+      <DataBinding>VIEW_PERSONAL.ORG</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>25</RowNumber>
+      <Caption>ตำแหน่งประชุม</Caption>
+      <DataBinding>RMSM_MDM_MEETING_POSITION_INFO.MEETING_POSITION_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>26</RowNumber>
+      <Caption>สถานะของบุคคล</Caption>
+      <DataBinding>MEETING_MEMBER_TYPE</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>27</RowNumber>
+      <Caption>สถานะการเข้าร่วม</Caption>
+      <DataBinding>RMSM_MDM_MEETING_STATUS_INFO.MEETING_STATUS_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+  </Items>
+</ExcelUIViewList>

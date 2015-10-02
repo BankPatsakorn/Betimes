@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_MDM_CHANGE_STATUS_INFO</TableName>
+  <ViewType>DetailView</ViewType>
+  <ViewName>RMSM_MDM_CHANGE_STATUS_INFO_DetailView</ViewName>
+  <ViewTitle>การเปลี่ยนสถานะห้องประชุม(RMS_UT0507)</ViewTitle>
+  <MasterPage />
+  <RootServiceUrl>output/service</RootServiceUrl>
+  <SQLInsert />
+  <SQLUpdate />
+  <SQLDelete />
+  <SQLSelect>SELECT RMSM_MDM_CHANGE_STATUS_INFO.ROOM_ID
+,[dbo].[RMSM_MDM_ROOM_INFO].ROOM_NAME
+,RMSM_MDM_CHANGE_STATUS_INFO.CHANGE_START_DATE
+,RMSM_MDM_CHANGE_STATUS_INFO.CHANGE_END_DATE
+,[dbo].[RMSM_MDM_CHANGE_STATUS_ROOM_INFO].[CHANGE_STATUS_ROOM_ID]
+,[dbo].[RMSM_MDM_CHANGE_STATUS_ROOM_INFO].[CHANGE_NAME]
+FROM [dbo].[RMSM_MDM_CHANGE_STATUS_INFO]
+LEFT JOIN [dbo].[RMSM_MDM_CHANGE_STATUS_ROOM_INFO] on
+[dbo].[RMSM_MDM_CHANGE_STATUS_INFO].CHANGE_STATUS = [dbo].[RMSM_MDM_CHANGE_STATUS_ROOM_INFO].[CHANGE_STATUS_ROOM_ID]
+LEFT JOIN [dbo].[RMSM_MDM_ROOM_INFO] on
+[dbo].[RMSM_MDM_CHANGE_STATUS_INFO].ROOM_ID = [dbo].[RMSM_MDM_ROOM_INFO].ROOM_ID
+WHERE CHANGE_STATUS_ID = @CHANGE_STATUS_ID</SQLSelect>
+  <SQLInsertParams />
+  <SQLUpdateParams />
+  <SQLDeleteParams />
+  <SQLSelectParams />
+  <InputParameters>RMSM_MDM_CHANGE_STATUS_INFO.CHANGE_STATUS_ID</InputParameters>
+  <FilterParameters />
+  <IsHasNewButton>false</IsHasNewButton>
+  <IsHasSaveButton>false</IsHasSaveButton>
+  <IsHasDeleteButton>false</IsHasDeleteButton>
+  <IsHasSubmitWf>false</IsHasSubmitWf>
+  <Items>
+    <ExcelUIViewDetailItem>
+      <RowNumber>18</RowNumber>
+      <ElementType>row</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>19</RowNumber>
+      <ElementType>col</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>1</Level>
+      <LevelValue>6</LevelValue>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>20</RowNumber>
+      <ElementType>dropdown</ElementType>
+      <ElementId />
+      <Caption>ห้องประชุม *</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption>inline</ShowCaption>
+      <DataBinding>RMSM_MDM_CHANGE_STATUS_INFO.ROOM_ID</DataBinding>
+      <PlaceHolderName />
+      <Width>300</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>21</RowNumber>
+      <ElementType>endcol</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>22</RowNumber>
+      <ElementType>endrow</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>23</RowNumber>
+      <ElementType>row</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>24</RowNumber>
+      <ElementType>col</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>1</Level>
+      <LevelValue>6</LevelValue>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>25</RowNumber>
+      <ElementType>datepicker</ElementType>
+      <ElementId />
+      <Caption>วันที่เริ่มต้น *</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption>inline</ShowCaption>
+      <DataBinding>RMSM_MDM_CHANGE_STATUS_INFO.CHANGE_START_DATE</DataBinding>
+      <PlaceHolderName />
+      <Width>300</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>26</RowNumber>
+      <ElementType>endcol</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>27</RowNumber>
+      <ElementType>col</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>1</Level>
+      <LevelValue>6</LevelValue>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>28</RowNumber>
+      <ElementType>datepicker</ElementType>
+      <ElementId />
+      <Caption>วันที่สิ้นสุด *</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption>inline</ShowCaption>
+      <DataBinding>RMSM_MDM_CHANGE_STATUS_INFO.CHANGE_END_DATE</DataBinding>
+      <PlaceHolderName />
+      <Width>300</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>29</RowNumber>
+      <ElementType>endcol</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>30</RowNumber>
+      <ElementType>col</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>1</Level>
+      <LevelValue>6</LevelValue>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>31</RowNumber>
+      <ElementType>dropdown</ElementType>
+      <ElementId />
+      <Caption>สถานะห้องประชุม *</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption>inline</ShowCaption>
+      <DataBinding>RMSM_MDM_CHANGE_STATUS_INFO.CHANGE_STATUS</DataBinding>
+      <PlaceHolderName />
+      <Width>300</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>32</RowNumber>
+      <ElementType>endcol</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>33</RowNumber>
+      <ElementType>endrow</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+  </Items>
+</ExcelUIViewDetail>

@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelTableSpec xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableId>258099960</TableId>
+  <TableName>RMSM_RMM_MEETING_AGENDA_DETAIL_DOC</TableName>
+  <DefaultDisplay>DOC_LOGICAL_NAME</DefaultDisplay>
+  <Fields>
+    <ExcelFieldSpec>
+      <SystemId>1</SystemId>
+      <FieldName>AGENDA_DETAIL_DOC</FieldName>
+      <FieldPrimaryKey>true</FieldPrimaryKey>
+      <FieldForeignKey>false</FieldForeignKey>
+      <FieldForeignKeyTableName />
+      <FieldType>Number</FieldType>
+      <FieldTypeString>int</FieldTypeString>
+      <DefaultValue />
+      <ValueList>False</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>2</SystemId>
+      <FieldName>AGENDA_DETAIL_ID</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>true</FieldForeignKey>
+      <FieldForeignKeyTableName>RMSM_RMM_MEETING_AGENDA_DETAIL</FieldForeignKeyTableName>
+      <FieldType>Number</FieldType>
+      <FieldTypeString>int</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>3</SystemId>
+      <FieldName>DOC_NO</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>false</FieldForeignKey>
+      <FieldForeignKeyTableName />
+      <FieldType>Number</FieldType>
+      <FieldTypeString>int</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>4</SystemId>
+      <FieldName>DOC_TYPE_ID</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>true</FieldForeignKey>
+      <FieldForeignKeyTableName>COMM_MDM_DOC_TYPE_INFO</FieldForeignKeyTableName>
+      <FieldType>Number</FieldType>
+      <FieldTypeString>int</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>5</SystemId>
+      <FieldName>DOC_LOGICAL_NAME</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>false</FieldForeignKey>
+      <FieldForeignKeyTableName />
+      <FieldType>String</FieldType>
+      <FieldTypeString>varchar (500)</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>6</SystemId>
+      <FieldName>DOC_PHYSICAL_NAME</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>false</FieldForeignKey>
+      <FieldForeignKeyTableName />
+      <FieldType>String</FieldType>
+      <FieldTypeString>varchar (500)</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>7</SystemId>
+      <FieldName>FILE_TYPE_ID</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>true</FieldForeignKey>
+      <FieldForeignKeyTableName>COMM_MDM_FILE_TYPE_INFO</FieldForeignKeyTableName>
+      <FieldType>Number</FieldType>
+      <FieldTypeString>int</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>8</SystemId>
+      <FieldName>DOC_IMPORT_DATE</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>false</FieldForeignKey>
+      <FieldForeignKeyTableName />
+      <FieldType>String</FieldType>
+      <FieldTypeString>date</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>9</SystemId>
+      <FieldName>DOC_TAG</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>false</FieldForeignKey>
+      <FieldForeignKeyTableName />
+      <FieldType>String</FieldType>
+      <FieldTypeString>varchar (4000)</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>10</SystemId>
+      <FieldName>RECORD_STATUS</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>false</FieldForeignKey>
+      <FieldForeignKeyTableName />
+      <FieldType>String</FieldType>
+      <FieldTypeString>char (1)</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>11</SystemId>
+      <FieldName>CREATE_USER_ID</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>false</FieldForeignKey>
+      <FieldForeignKeyTableName />
+      <FieldType>String</FieldType>
+      <FieldTypeString>varchar (50)</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>12</SystemId>
+      <FieldName>CREATE_DATE</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>false</FieldForeignKey>
+      <FieldForeignKeyTableName />
+      <FieldType>DateTime</FieldType>
+      <FieldTypeString>datetime</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>13</SystemId>
+      <FieldName>UPD_USER_ID</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>false</FieldForeignKey>
+      <FieldForeignKeyTableName />
+      <FieldType>String</FieldType>
+      <FieldTypeString>varchar (50)</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+    <ExcelFieldSpec>
+      <SystemId>14</SystemId>
+      <FieldName>UPD_DATE</FieldName>
+      <FieldPrimaryKey>false</FieldPrimaryKey>
+      <FieldForeignKey>false</FieldForeignKey>
+      <FieldForeignKeyTableName />
+      <FieldType>DateTime</FieldType>
+      <FieldTypeString>datetime</FieldTypeString>
+      <DefaultValue />
+      <ValueList>True</ValueList>
+      <IsAllowNull>false</IsAllowNull>
+      <IsRequireField>false</IsRequireField>
+      <IsRequireFieldMsg />
+      <RegularExpression />
+      <IsRegularExpressionMsg />
+      <IsUniqueValue>false</IsUniqueValue>
+      <IsUniqueValueMsg />
+      <MinLength>0</MinLength>
+      <IsMinLengthMsg />
+      <MaxLength>0</MaxLength>
+      <IsMaxLengthMsg />
+      <RuleCriteria />
+      <RuleCriteriaMsg />
+      <IsFileAttachment>false</IsFileAttachment>
+    </ExcelFieldSpec>
+  </Fields>
+  <AppearanceRules />
+  <AppearanceRuleDisplays />
+  <CalculationRules />
+</ExcelTableSpec>

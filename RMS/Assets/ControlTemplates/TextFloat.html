@@ -1,0 +1,14 @@
+﻿^EDIT 
+<dx:ASPxSpinEdit ID="ctl{fieldname}"  runat="server" DisplayFormatString="n2" Width="{width}">
+<SpinButtons ShowIncrementButtons="false"></SpinButtons>
+</dx:ASPxSpinEdit>
+^EDITPOPULATECS
+ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+^VIEW
+<dx:ASPxLabel ID="ASPxLabel1" runat="server" ></dx:ASPxLabel>
+^VIEWPOPULATECS
+ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+^INSERTCS
+{datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.Decimal, ctl{fieldname}.Text);
+^UPDATECS
+{datasourceid}.UpdateParameters.Add("{fieldname}", System.Data.DbType.Decimal, ctl{fieldname}.Text);

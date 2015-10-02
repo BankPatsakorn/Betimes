@@ -1,0 +1,25 @@
+﻿^EDIT 
+<div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+                    <div class="col-sm-8">
+<dx:ASPxTextBox ID="ctl{fieldname}" Enabled="False" Height="30" ForeColor="#000000" BackColor="#DDDDDD" runat="server" Width="{width}"></dx:ASPxTextBox>
+                        </div>
+    </div>
+^VIEW
+<div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+<div class="col-sm-8">
+<dx:ASPxLabel ID="ctl{fieldname}" CssClass="form-control" runat="server" ></dx:ASPxLabel>
+    </div>
+    </div>
+^EDITPOPULATECS
+        ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+        ctl{fieldname}.Attributes.Add("disabled","disabled");
+^NEWPOPULATECS
+        ctl{fieldname}.Value = "";
+^VIEWPOPULATECS
+        ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+^INSERTCS
+        {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.String, ctl{fieldname}.Text);
+^UPDATECS
+        {datasourceid}.UpdateParameters.Add("{fieldname}", System.Data.DbType.String, ctl{fieldname}.Text);

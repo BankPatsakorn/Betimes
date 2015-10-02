@@ -1,0 +1,24 @@
+﻿^EDIT 
+<div ID="{fieldname}" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+                    <div class="col-sm-8">
+<dx:ASPxSpinEdit ID="ctl{fieldname}"  runat="server" Height="30"  Width="{width}">
+<SpinButtons ShowIncrementButtons="false"></SpinButtons>
+</dx:ASPxSpinEdit>
+                        </div>
+    </div>
+^VIEW
+<div ID="Div1" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">{caption}:</label>
+                    <div class="col-sm-8">
+<dx:ASPxLabel ID="ctl{fieldname}" CssClass="form-control" runat="server" ></dx:ASPxLabel>
+                        </div>
+    </div>
+^EDITPOPULATECS
+        ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+^VIEWPOPULATECS
+        ctl{fieldname}.Value = drv["{fieldname}"].ToString();
+^INSERTCS
+        {datasourceid}.InsertParameters.Add("{fieldname}", System.Data.DbType.Int32, ctl{fieldname}.Text);
+^UPDATECS
+        {datasourceid}.UpdateParameters.Add("{fieldname}", System.Data.DbType.Int32, ctl{fieldname}.Text);

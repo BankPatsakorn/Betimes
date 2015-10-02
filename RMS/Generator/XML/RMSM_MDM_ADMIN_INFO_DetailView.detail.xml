@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_MDM_ADMIN_INFO,VIEW_ORGANIZE</TableName>
+  <ViewType>DetailView</ViewType>
+  <ViewName>RMSM_MDM_ADMIN_INFO_DetailView</ViewName>
+  <ViewTitle>ผู้ดูแลห้องประชุม(RMS_UT0507) </ViewTitle>
+  <MasterPage />
+  <RootServiceUrl>output/service</RootServiceUrl>
+  <SQLInsert />
+  <SQLUpdate />
+  <SQLDelete />
+  <SQLSelect>SELECT DISTINCT RMSM_MDM_ADMIN_INFO.ADMIN_ID,[OPM_COMMON_DATA].[dbo].[VIEW_ORGANIZE].UNIT_ID
+,[OPM_COMMON_DATA].[dbo].[VIEW_ORGANIZE].UNIT_NAME
+,[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].NAME
+,RMSM_MDM_ADMIN_INFO.OFFICER_ID
+,[dbo].[RMSM_MDM_ADMIN_INFO].ROOM_ID
+FROM [dbo].[RMSM_MDM_ADMIN_INFO]
+LEFT JOIN [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL] on
+[dbo].[RMSM_MDM_ADMIN_INFO].OFFICER_ID = [OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].OFFICER_ID
+LEFT JOIN [OPM_COMMON_DATA].[dbo].[VIEW_ORGANIZE] on
+[OPM_COMMON_DATA].[dbo].[VIEW_PERSONAL].UNIT_ID = [OPM_COMMON_DATA].[dbo].[VIEW_ORGANIZE].UNIT_ID
+LEFT JOIN [dbo].[RMSM_MDM_ROOM_INFO] on
+[dbo].[RMSM_MDM_ADMIN_INFO].ROOM_ID = [dbo].[RMSM_MDM_ROOM_INFO].ROOM_ID
+WHERE RMSM_MDM_ADMIN_INFO.ADMIN_ID = @ADMIN_ID</SQLSelect>
+  <SQLInsertParams />
+  <SQLUpdateParams />
+  <SQLDeleteParams />
+  <SQLSelectParams>ADMIN_ID</SQLSelectParams>
+  <InputParameters>RMSM_MDM_ADMIN_INFO.ADMIN_ID</InputParameters>
+  <FilterParameters />
+  <IsHasNewButton>false</IsHasNewButton>
+  <IsHasSaveButton>false</IsHasSaveButton>
+  <IsHasDeleteButton>false</IsHasDeleteButton>
+  <IsHasSubmitWf>false</IsHasSubmitWf>
+  <Items>
+    <ExcelUIViewDetailItem>
+      <RowNumber>18</RowNumber>
+      <ElementType>row</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>19</RowNumber>
+      <ElementType>col</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>1</Level>
+      <LevelValue>12</LevelValue>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>20</RowNumber>
+      <ElementType>lookup</ElementType>
+      <ElementId />
+      <Caption>ชื่อ-นามสกุล*</Caption>
+      <Level>1</Level>
+      <LevelValue>VIEW_PERSONAL_LookupListView</LevelValue>
+      <ShowCaption />
+      <DataBinding>RMSM_MDM_ADMIN_INFO.OFFICER_ID</DataBinding>
+      <PlaceHolderName />
+      <Width>750</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>21</RowNumber>
+      <ElementType>textdis</ElementType>
+      <ElementId />
+      <Caption>หน่วยงาน</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption />
+      <DataBinding>VIEW_PERSONAL.UNIT_NAME</DataBinding>
+      <PlaceHolderName />
+      <Width>660</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>22</RowNumber>
+      <ElementType>dropdown</ElementType>
+      <ElementId />
+      <Caption>ชื่อห้องประชุม*</Caption>
+      <Level>1</Level>
+      <LevelValue>field6</LevelValue>
+      <ShowCaption />
+      <DataBinding>RMSM_MDM_ADMIN_INFO.ROOM_ID</DataBinding>
+      <PlaceHolderName />
+      <Width>660</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>23</RowNumber>
+      <ElementType>endcol</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+    <ExcelUIViewDetailItem>
+      <RowNumber>24</RowNumber>
+      <ElementType>endrow</ElementType>
+      <ElementId />
+      <Caption />
+      <Level>0</Level>
+      <ShowCaption />
+      <DataBinding />
+      <PlaceHolderName />
+      <Width>0</Width>
+      <Height>0</Height>
+      <Formats />
+      <TextAlignment />
+      <CustomStyle />
+    </ExcelUIViewDetailItem>
+  </Items>
+</ExcelUIViewDetail>

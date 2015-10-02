@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelUIViewLookup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TableName>RMSM_MDM_SERVICE_INFO,COMM_MDM_COUNT_UNIT_INFO</TableName>
+  <ViewType>LookupListView</ViewType>
+  <ViewName>SERVICE_INFO_LookupListView</ViewName>
+  <ViewTitle>ข้อมูลบริการการประชุม</ViewTitle>
+  <MasterPage />
+  <OrderBy>output/service</OrderBy>
+  <IsHasFilter>true</IsHasFilter>
+  <PageSize>20</PageSize>
+  <ReturnField />
+  <InputParameters />
+  <FilterParameters />
+  <FilterView />
+  <SQLSelect>
+SELECT [RMSM_MDM_SERVICE_INFO].[SERVICE_ID]
+      ,RMSM_MDM_SERVICE_INFO.[SERVICE_CODE]
+      ,RMSM_MDM_SERVICE_INFO.[SERVICE_NAME]
+   ,[OPM_COMMON_DATA].[dbo].[COMM_MDM_COUNT_UNIT_INFO].COUNT_UNIT_NAME
+  FROM [dbo].[RMSM_MDM_SERVICE_INFO]
+  LEFT JOIN [OPM_COMMON_DATA].[dbo].[COMM_MDM_COUNT_UNIT_INFO] on
+  [dbo].[RMSM_MDM_SERVICE_INFO].COUNT_UNIT_ID = [OPM_COMMON_DATA].[dbo].[COMM_MDM_COUNT_UNIT_INFO].COUNT_UNIT_ID
+  WHERE [dbo].[RMSM_MDM_SERVICE_INFO].RECORD_STATUS = 'A'</SQLSelect>
+  <SQLSelectParams />
+  <Items>
+    <ExcelUIViewListItem>
+      <RowNumber>15</RowNumber>
+      <Caption>รหัสบริการ</Caption>
+      <DataBinding>RMSM_MDM_SERVICE_INFO.SERVICE_CODE</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>16</RowNumber>
+      <Caption>บริการ</Caption>
+      <DataBinding>RMSM_MDM_SERVICE_INFO.SERVICE_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+    <ExcelUIViewListItem>
+      <RowNumber>17</RowNumber>
+      <Caption>หน่วย</Caption>
+      <DataBinding>COMM_MDM_COUNT_UNIT_INFO.COUNT_UNIT_NAME</DataBinding>
+      <Width>0</Width>
+      <Height>0</Height>
+    </ExcelUIViewListItem>
+  </Items>
+</ExcelUIViewLookup>
