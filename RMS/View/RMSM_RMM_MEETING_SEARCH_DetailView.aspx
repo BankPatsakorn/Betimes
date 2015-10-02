@@ -125,12 +125,10 @@
                 <input type="button" value="ล้างข้อมูล" class="btn btn-primary" /></div>
         <!--end row 27-->
         <div>&nbsp;</div>
-        <div>
-               <label for="" style="color:gray;">พบ xxx รายการ</label>
-        </div> 
+      
         <div>
             <div>
-
+                 <label for="" class="foundNumberObject">พบ xxx รายการ</label>
 
                 <dx:ASPxGridView ID="viewRMSM_RMM_MEETING_SEARCH_ListView" runat="server" Width="100%"
                     AutoGenerateColumns="False" Styles-AlternatingRow-BackColor="White" Styles-Row-BackColor="#D9EDF7"

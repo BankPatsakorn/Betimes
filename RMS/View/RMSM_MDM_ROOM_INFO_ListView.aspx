@@ -105,11 +105,8 @@
     </div>
     <div>&nbsp;</div>
     <div>
-        <label for="" style="color: gray;">พบ xxx รายการ</label>
-    </div>
-    <div>
         <div>
-
+             <label for="" class="foundNumberObject">พบ xxx รายการ</label>
 
             <dx:ASPxGridView ID="viewRMSM_MDM_ROOM_INFO_ListView" runat="server" Width="100%"
                 AutoGenerateColumns="False" Styles-AlternatingRow-BackColor="White" Styles-Row-BackColor="#D9EDF7"
