@@ -101,7 +101,7 @@
 
 
         <input type="button" class='btn btn-primary' value=' เพิ่ม ' onclick="location = 'RMSM_MDM_ROOM_INFO_DetailView.aspx?id=-1';" />
-        <input type="button" class='btn btn-primary' value='   ค้นหา   ' onclick="location = '#';" />
+        <asp:Button Text="ค้นหา" CssClass="btn btn-primary" ID="btnSearch" OnClick="btnSearch_Click" runat="server" />
     </div>
     <div>&nbsp;</div>
     <div>
@@ -124,7 +124,7 @@
                         </DataItemTemplate>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="รหัสห้องประชุม" FieldName="ROOM_CODE" VisibleIndex="3">
+                    <dx:GridViewDataTextColumn Caption="รหัสห้องประชุม" Width="5%" FieldName="ROOM_CODE" VisibleIndex="3">
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn Caption="ห้องประชุม" FieldName="ROOM_NAME" VisibleIndex="4">
@@ -132,7 +132,7 @@
 
                     <dx:GridViewDataTextColumn Caption="รูป" FieldName="ROOM_MAPPING" VisibleIndex="5">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn Caption="สถานะของห้อง" FieldName="ROOM_MAPPING" VisibleIndex="6">
+                    <dx:GridViewDataTextColumn Caption="สถานะของห้อง" Width="10%" FieldName="ROOM_STATUS_NAME" VisibleIndex="6">
                     </dx:GridViewDataTextColumn>
                 </Columns>
                 <Settings ShowFilterRow="false" ShowFilterRowMenu="true" ShowHeaderFilterButton="false" ShowGroupPanel="False" />
@@ -157,13 +157,16 @@
 ,RMSM_MDM_ROOM_INFO.ADMIN_ID
 ,RMSM_MDM_ROOM_INFO.ROOM_CODE
 ,RMSM_MDM_ROOM_INFO.ROOM_NAME
+,RMSM_MDM_ROOM_INFO.ROOM_STATUS
 ,RMSM_MDM_ROOM_INFO.ROOM_MAPPING
- from RMSM_MDM_ROOM_INFO where  1=1  AND RMSM_MDM_ROOM_INFO.ROOM_ID=@ROOM_ID">
+,case when [dbo].[RMSM_MDM_ROOM_INFO].[ROOM_STATUS]=0 then 'ปกติ' when [dbo].[RMSM_MDM_ROOM_INFO].[ROOM_STATUS]=1 then 'งดใช้งาน' when [dbo].[RMSM_MDM_ROOM_INFO].[ROOM_STATUS]=2 then 'ไม่ใช้งาน' end as ROOM_STATUS_NAME
+ from RMSM_MDM_ROOM_INFO
+ where (1 = (CASE ISNULL(@ROOM_ID,'') WHEN '' THEN 1  ELSE 0 END ) OR RMSM_MDM_ROOM_INFO.ROOM_ID = @ROOM_ID)">
             <DeleteParameters>
                 <asp:Parameter Name="ROOM_ID" Type="Int32" />
             </DeleteParameters>
             <SelectParameters>
-                <asp:Parameter Name="ROOM_ID" Type="Int32" />
+                <asp:Parameter Name="ROOM_ID" ConvertEmptyStringToNull="false" DefaultValue="" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
     </div>

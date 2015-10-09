@@ -102,11 +102,11 @@ public class emailMeeting : IHttpHandler {
 
     private void FnSendMail()
     {
-        EasyMail.FNC_SEND_EMAIL("chanin.sic@gmail.com", "Test Email emeeting pat", @"เรียนท่านผู้ดูแลระบบ
-                ห้องประชุม  : aaaaaaaa
-                วันที่เริ่ม:aaaaaaa เวลา : aaaaaaa	
-                วันที่สิ้นสุด: aaaaaa เวลา : aaaaaaaaa
-                ตรวจสอบรายการจองห้องประชุมได้ที่ : """, "");
+//        EasyMail.FNC_SEND_EMAIL("chanin.sic@gmail.com", "Test Email emeeting pat", @"เรียนท่านผู้ดูแลระบบ
+//                ห้องประชุม  : aaaaaaaa
+//                วันที่เริ่ม:aaaaaaa เวลา : aaaaaaa	
+//                วันที่สิ้นสุด: aaaaaa เวลา : aaaaaaaaa
+//                ตรวจสอบรายการจองห้องประชุมได้ที่ : """, "");
         //MainClass Cls =  new MainClass();
 
        // EasyMail ezMail = new EasyMail();

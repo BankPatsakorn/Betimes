@@ -25,8 +25,9 @@ dsRMSM_MDM_ROOM_INFO_ListView.SelectParameters.Clear();
         {
             inputROOM_ID = Request.QueryString["ROOM_ID"];
         }
-dsRMSM_MDM_ROOM_INFO_ListView.SelectParameters.Add("ROOM_ID", System.Data.DbType.Int32, inputROOM_ID);
 
+dsRMSM_MDM_ROOM_INFO_ListView.SelectParameters.Add("ROOM_ID", System.Data.DbType.String, string.Empty);
+dsRMSM_MDM_ROOM_INFO_ListView.SelectParameters["ROOM_ID"].ConvertEmptyStringToNull = false;
     }
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -58,7 +59,21 @@ dsRMSM_MDM_ROOM_INFO_ListView.SelectParameters.Add("ROOM_ID", System.Data.DbType
     {
 
     }
-
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        if (ctlROOM_ID.SelectedIndex > 0)
+        {
+            string index = ctlROOM_ID.SelectedItem.Value.ToString();
+            dsRMSM_MDM_ROOM_INFO_ListView.SelectParameters["ROOM_ID"].DefaultValue = index;
+        }
+        else
+        {
+            dsRMSM_MDM_ROOM_INFO_ListView.SelectParameters.Clear();
+            dsRMSM_MDM_ROOM_INFO_ListView.SelectParameters.Add("ROOM_ID", System.Data.DbType.String, string.Empty);
+            dsRMSM_MDM_ROOM_INFO_ListView.SelectParameters["ROOM_ID"].ConvertEmptyStringToNull = false;
+        }
+        dsRMSM_MDM_ROOM_INFO_ListView.DataBind();
+    }
     void PopulateEditData()
     {
         //

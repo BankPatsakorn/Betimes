@@ -79,7 +79,7 @@
         <span style="font-size: 23px">จัดการห้องประชุม</span><span style="font-size: 20px; color: gray;"> (RMS_UT0501-1)</span>
     </div>
     <div class="form-group col-sm-12" style="margin-top: 10px;">
-        <div class="col-sm-offset-10 col-sm-6">
+        <div class="col-sm-12 text-right">
             <asp:Button ID="btnSave" runat="server" Text="บันทึก" CssClass="btn btn-success btn-80" OnClientClick="return ClientValidation();" OnClick="btnSave_Click" />
             <asp:Button ID="btnBack" runat="server" Text="ยกเลิก" CssClass="btn btn-warning btn-80" OnClick="btnBack_Click" />
         </div>
@@ -126,19 +126,20 @@
                                     <div id="ROOM_CODE" class="form-group col-sm-12">
                                         <label for="" class="col-sm-4 control-label">รหัสห้องประชุม:</label>
                                         <div class="col-sm-8">
-                                            <dx:ASPxTextBox ID="ctlROOM_CODE" Enabled="False" Height="30" ForeColor="#000000" BackColor="#DDDDDD" runat="server" Width="300"></dx:ASPxTextBox>
+                                            <dx:ASPxTextBox ID="ctlROOM_CODE" Enabled="False" Height="30" ForeColor="#000000" BackColor="#DDDDDD" runat="server" Width="100%"></dx:ASPxTextBox>
                                         </div>
                                     </div>
                                     <div id="ROOM_NAME" class="form-group col-sm-12">
                                         <label for="" class="col-sm-4 control-label">ชื่อห้องประชุม<span style="color: red">*</span>:</label>
                                         <div class="col-sm-8">
-                                            <dx:ASPxTextBox ID="ctlROOM_NAME" runat="server" Height="30" Width="300"></dx:ASPxTextBox>
+                                            <dx:ASPxTextBox ID="ctlROOM_NAME" runat="server" Height="30" Width="100%"></dx:ASPxTextBox>
+                                             <asp:RequiredFieldValidator runat="server" id="reqctlctlROOM_NAME" ForeColor="Red" controltovalidate="ctlROOM_NAME" errormessage="กรุณากรอกชื่อห้องประชุม" />
                                         </div>
                                     </div>
                                     <div id="ROOM_FLOOR" class="form-group col-sm-12">
                                         <label for="" class="col-sm-4 control-label">ชั้น:</label>
                                         <div class="col-sm-8">
-                                            <dx:ASPxSpinEdit ID="ctlROOM_FLOOR" runat="server" Height="30" Width="300">
+                                            <dx:ASPxSpinEdit ID="ctlROOM_FLOOR" MaxLength="3" runat="server" Height="30" Width="100%">
                                                 <SpinButtons ShowIncrementButtons="false"></SpinButtons>
                                             </dx:ASPxSpinEdit>
                                         </div>
@@ -156,24 +157,30 @@
                                     <div id="ROOM_CAPACITY" class="form-group col-sm-12">
                                         <label for="" class="col-sm-4">ความจุสูงสุด<span style="color: red">*</span>:</label>
                                         <div class="col-sm-4">
-                                            <dx:ASPxSpinEdit ID="ctlROOM_CAPACITY" runat="server" Height="30" Width="100%">
+                                            <dx:ASPxSpinEdit ID="ctlROOM_CAPACITY_MAX" MaxLength="4" runat="server" Height="30" Width="100%">
                                                 <SpinButtons ShowIncrementButtons="false"></SpinButtons>
                                             </dx:ASPxSpinEdit>
+                                           
                                         </div>
                                         <div class="col-sm-2">
                                             คน
+                                             
                                         </div>
+                                         <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator1" ForeColor="Red" controltovalidate="ctlROOM_CAPACITY_MAX" errormessage="กรุณากรอกความจุสูงสุดของห้องประชุม" />
                                     </div>
                                     <div id="Div1" class="form-group col-sm-12">
                                         <label for="" class="col-sm-4">ความจุต่ำสุด<span style="color: red">*</span>:</label>
                                         <div class="col-sm-4">
-                                            <dx:ASPxSpinEdit ID="ASPxSpinEdit1" runat="server" Height="30" Width="100%">
+                                            <dx:ASPxSpinEdit ID="ctlROOM_CAPACITY_MIN" MaxLength="4" runat="server" Height="30" Width="100%">
                                                 <SpinButtons ShowIncrementButtons="false"></SpinButtons>
                                             </dx:ASPxSpinEdit>
+                                             
                                         </div>
                                         <div class="col-sm-2">
                                             คน
+                                             <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator2" ForeColor="Red" controltovalidate="ctlROOM_CAPACITY_MIN" errormessage="กรุณากรอกความจุต่ำสุดของห้องประชุม" />
                                         </div>
+                                       
                                     </div>
                                     <div id="ROOM_MAPPING" class="form-group col-sm-12">
                                         <label for="" class="col-sm-4 control-label">รูป:</label>
@@ -198,7 +205,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <!--button33-->
-                            <input type="button" value="เพิ่มโสตทัศนูปกรณ์" class="btn btn-primary" onclick="location = 'RMSM_RMM_MEETING_EQUIPMENT_DetailView.aspx';" />
+                            <input type="button" value="เพิ่มโสตทัศนูปกรณ์" class="btn btn-primary" onclick="location = 'RMSM_MDM_EQUIPMENT_INFO_DetailView.aspx';" />
                             <div>&nbsp;</div>
                             <div>
                                 <div>
@@ -225,13 +232,13 @@
                                             <dx:GridViewDataTextColumn Caption="โสตทัศนูปกรณ์" FieldName="EQUIPMENT_NAME" VisibleIndex="3">
                                             </dx:GridViewDataTextColumn>
 
-                                            <dx:GridViewDataTextColumn Caption="จำนวน" FieldName="EQUIPMENT_AMOUNT" VisibleIndex="4">
+                                            <dx:GridViewDataTextColumn Caption="จำนวน" Width="5%" FieldName="EQUIPMENT_AMOUNT" VisibleIndex="4">
                                             </dx:GridViewDataTextColumn>
 
-                                            <dx:GridViewDataTextColumn Caption="รูป" FieldName="EQUIPMENT_PATH" VisibleIndex="5">
-                                            </dx:GridViewDataTextColumn>
+                                          <%--  <dx:GridViewDataTextColumn Caption="รูป" FieldName="EQUIPMENT_PATH" VisibleIndex="5">
+                                            </dx:GridViewDataTextColumn>--%>
 
-                                            <dx:GridViewDataTextColumn Caption="หน่วย" FieldName="COUNT_UNIT_NAME" VisibleIndex="6">
+                                            <dx:GridViewDataTextColumn Caption="หน่วยนับ" Width="5%" FieldName="COUNT_UNIT_NAME" VisibleIndex="6">
                                             </dx:GridViewDataTextColumn>
                                         </Columns>
                                         <Settings ShowFilterRow="false" ShowFilterRowMenu="true" ShowHeaderFilterButton="false" ShowGroupPanel="False" />
@@ -283,7 +290,7 @@
                                             <dx:GridViewDataTextColumn Caption="บริการ" FieldName="SERVICE_NAME" VisibleIndex="3">
                                             </dx:GridViewDataTextColumn>
 
-                                            <dx:GridViewDataTextColumn Caption="หน่วยนับ" FieldName="COUNT_UNIT_NAME" VisibleIndex="4">
+                                            <dx:GridViewDataTextColumn Caption="หน่วยนับ" Width="5%" FieldName="COUNT_UNIT_NAME" VisibleIndex="4">
                                             </dx:GridViewDataTextColumn>
                                         </Columns>
                                         <Settings ShowFilterRow="false" ShowFilterRowMenu="true" ShowHeaderFilterButton="false" ShowGroupPanel="False" />
@@ -332,7 +339,7 @@
                                                 </DataItemTemplate>
                                             </dx:GridViewDataTextColumn>
 
-                                            <dx:GridViewDataTextColumn Caption="รหัสห้องประชุม" FieldName="ROOM_CODE" VisibleIndex="3">
+                                            <dx:GridViewDataTextColumn Caption="รหัสห้องประชุม" Width="10%" FieldName="ROOM_CODE" VisibleIndex="3">
                                             </dx:GridViewDataTextColumn>
 
                                             <dx:GridViewDataTextColumn Caption="ชื่อผู้ดูแลห้องประชุม" FieldName="NAME" VisibleIndex="4">
@@ -439,7 +446,8 @@ RMSM_MDM_ROOM_INFO.ROOM_ID
 ,RMSM_MDM_ROOM_INFO.ROOM_STATUS
 ,RMSM_MDM_ROOM_INFO.ROOM_CAPACITY
 ,RMSM_MDM_ROOM_INFO.ROOM_MAPPING
- 
+,RMSM_MDM_ROOM_INFO.ROOM_CAPACITY_MIN
+,RMSM_MDM_ROOM_INFO.ROOM_CAPACITY_MAX
 from RMSM_MDM_ROOM_INFO 
 where  1=1  AND RMSM_MDM_ROOM_INFO.ROOM_ID=@ROOM_ID"
             InsertCommand="insert into RMSM_MDM_ROOM_INFO

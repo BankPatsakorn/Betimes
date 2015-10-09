@@ -79,7 +79,7 @@
         <span style="font-size: 23px">บันทึกการจองห้องประชุม</span><span style="font-size: 20px; color: gray;"> (RMS_UT0102)</span>
     </div>
     <div class="form-group col-sm-12" style="margin-top: 10px;">
-        <div class="col-sm-offset-10 col-sm-6">
+        <div class="col-sm-12 text-right">
             <asp:Button ID="btnSave" runat="server" Text="บันทึก" CssClass="btn btn-success btn-80" OnClientClick="return ClientValidation();" OnClick="btnSave_Click" />
             <asp:Button ID="btnBack" runat="server" Text="ยกเลิก" CssClass="btn btn-warning btn-80" OnClick="btnBack_Click" />
         </div>

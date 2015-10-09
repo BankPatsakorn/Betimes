@@ -74,6 +74,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="ScriptManager" runat="server" />
+
     <div class="form-group col-sm-12" style="margin-top: 50px;">
         <div class="col-sm-offset-10 col-sm-6">
             <asp:Button ID="btnSave" runat="server" Text="บันทึก" CssClass="btn btn-success btn-80" OnClick="btnSave_Click" />
@@ -100,6 +101,7 @@
                     <label for="" class="col-sm-4 control-label">ชื่อบริการ<span style="color: red">*</span>:</label>
                     <div class="col-sm-8">
                         <dx:ASPxTextBox ID="ctlSERVICE_NAME" runat="server" Height="30" Width="100%"></dx:ASPxTextBox>
+                         <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator1" ForeColor="Red" controltovalidate="ctlSERVICE_NAME" errormessage="กรุณากรอกชื่อบริการ" />
                     </div>
                 </div>
                 <div id="COUNT_UNIT_ID" class="form-group col-sm-12">

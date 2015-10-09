@@ -74,40 +74,39 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="ScriptManager" runat="server" />
-    <div class="form-group col-sm-12" style="margin-top: 20px;">
-    </div>
-    <div style="padding-left: 2em; padding-right: 2em; padding-top: 2em; padding-bottom: 2em">
-        <span style="font-size: 23px">การเปลี่ยนสถานะห้องประชุม</span><span style="font-size: 20px; color: gray;"> (RMS_UT0507)</span>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <div id="ROOM_ID" class="form-group col-sm-6">
-                <label for="" class="col-sm-4">ห้องประชุม:</label>
-                <div class="col-sm-6">
-                    <dx:ASPxComboBox
-                        ID="ctlROOM_ID" runat="server" Height="30"
-                        DropDownStyle="DropDown" DataSourceID="dsRMSM_MDM_ROOM_INFO"
-                        TextField="ROOM_NAME" ValueField="ROOM_ID" SelectedIndex="0"
-                        Width="100%" IncrementalFilteringMode="StartsWith" />
-                </div>
-
+ 
+            <div class="form-group col-sm-12" style="margin-top: 20px;">
             </div>
-        </div>
-    </div>
-    <div>
-        <input type="button" class='btn btn-primary' value=' เพิ่ม ' onclick="location = 'RMSM_MDM_CHANGE_STATUS_INFO_DetailView.aspx?id=-1';" />
-    
-    <input type="button" class='btn btn-primary' value='   ค้นหา   ' onclick="location = '#';" />
-    </div>
-    <br />
-    
-        <div>
-               <label for="" style="color:gray;">พบ xxx รายการ</label>
-        </div>
-    <div>
-        <div>
+            <div style="padding-left: 2em; padding-right: 2em; padding-top: 2em; padding-bottom: 2em">
+                <span style="font-size: 23px">การเปลี่ยนสถานะห้องประชุม</span><span style="font-size: 20px; color: gray;"> (RMS_UT0507)</span>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="ROOM_ID" class="form-group col-sm-6">
+                        <label for="" class="col-sm-4">ห้องประชุม:</label>
+                        <div class="col-sm-6">
+                            <dx:ASPxComboBox
+                                ID="ctlROOM_ID" runat="server" Height="30"
+                                DropDownStyle="DropDown" DataSourceID="dsRMSM_MDM_ROOM_INFO"
+                                TextField="ROOM_NAME" ValueField="ROOM_ID" SelectedIndex="0"
+                                Width="100%" IncrementalFilteringMode="StartsWith" />
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+            <div>
+                <input type="button" class='btn btn-primary' value=' เพิ่ม ' onclick="location = 'RMSM_MDM_CHANGE_STATUS_INFO_DetailView.aspx?id=-1';" />
 
+               <asp:Button Text="ค้นหา" CssClass="btn btn-primary" ID="btnSearch" OnClick="btnSearch_Click" runat="server" />
+            </div>
+            <br />
+      
+
+    <div>
+        <div>
+            <asp:Label ID="lblNumberInGrid" Width="100%" Text="พบ xxx รายการ" runat="server"  CssClass="foundNumberObject"/>
+            
             <dx:ASPxGridView ID="viewRMSM_MDM_CHANGE_STATUS_INFO_ListView" runat="server" Width="100%"
                 AutoGenerateColumns="False" Styles-AlternatingRow-BackColor="White" Styles-Row-BackColor="#D9EDF7"
                 DataSourceID="dsRMSM_MDM_CHANGE_STATUS_INFO_ListView" KeyFieldName="CHANGE_STATUS_ID" ClientInstanceName="viewRMSM_MDM_CHANGE_STATUS_INFO_ListView" Theme="Metropolis">
@@ -135,7 +134,7 @@
                     <dx:GridViewDataTextColumn Caption="วันที่สิ้นสุด" FieldName="CHANGE_END_DATE" VisibleIndex="5">
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="สถานะห้องประชุม" FieldName="CHANGE_NAME" VisibleIndex="6">
+                    <dx:GridViewDataTextColumn Caption="สถานะห้องประชุม" FieldName="CHANGE_STATUS_NAME" VisibleIndex="6">
                     </dx:GridViewDataTextColumn>
                 </Columns>
                 <Settings ShowFilterRow="false" ShowFilterRowMenu="true" ShowHeaderFilterButton="false" ShowGroupPanel="False" />
@@ -159,22 +158,22 @@
 ,[dbo].[RMSM_MDM_ROOM_INFO].ROOM_NAME
 ,[dbo].[RMSM_MDM_CHANGE_STATUS_INFO].[CHANGE_START_DATE]
 ,[dbo].[RMSM_MDM_CHANGE_STATUS_INFO].[CHANGE_END_DATE]
-,[dbo].[RMSM_MDM_CHANGE_STATUS_ROOM_INFO].[CHANGE_NAME]
+,case when [dbo].[RMSM_MDM_CHANGE_STATUS_INFO].[CHANGE_STATUS]=0 then 'ปกติ' when [dbo].[RMSM_MDM_CHANGE_STATUS_INFO].[CHANGE_STATUS]=1 then 'งดใช้งาน' when [dbo].[RMSM_MDM_CHANGE_STATUS_INFO].[CHANGE_STATUS]=2 then 'ไม่ใช้งาน' end as CHANGE_STATUS_NAME
 FROM [dbo].[RMSM_MDM_CHANGE_STATUS_INFO]
 LEFT JOIN [dbo].[RMSM_MDM_ROOM_INFO] on
 [dbo].[RMSM_MDM_CHANGE_STATUS_INFO].[ROOM_ID] = [dbo].[RMSM_MDM_ROOM_INFO].ROOM_ID
-LEFT JOIN [dbo].[RMSM_MDM_CHANGE_STATUS_ROOM_INFO] on
-[dbo].[RMSM_MDM_CHANGE_STATUS_INFO].CHANGE_STATUS_ID = [dbo].[RMSM_MDM_CHANGE_STATUS_ROOM_INFO].[CHANGE_STATUS_ROOM_ID]
-WHERE [dbo].[RMSM_MDM_CHANGE_STATUS_INFO].[RECORD_STATUS] = 'A'">
+WHERE [dbo].[RMSM_MDM_CHANGE_STATUS_INFO].[RECORD_STATUS] = 'A' AND
+[dbo].[RMSM_MDM_CHANGE_STATUS_INFO].[ROOM_ID] LIKE '%'+@ROOM_ID+'%'">
             <DeleteParameters>
                 <asp:Parameter Name="CHANGE_STATUS_ID" Type="Int32" />
             </DeleteParameters>
             <SelectParameters>
+                <asp:Parameter Name="ROOM_ID" ConvertEmptyStringToNull="false" DefaultValue="" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
     </div>
-    
-<asp:SqlDataSource ID="dsRMSM_MDM_ROOM_INFO" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
-            SelectCommand="select '-1' ROOM_ID,'กรุณาเลือก' ROOM_NAME UNION select ROOM_ID,ROOM_NAME from RMSM_MDM_ROOM_INFO where RECORD_STATUS='A'"></asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="dsRMSM_MDM_ROOM_INFO" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+        SelectCommand="select '-1' ROOM_ID,'กรุณาเลือก' ROOM_NAME UNION select ROOM_ID,ROOM_NAME from RMSM_MDM_ROOM_INFO where RECORD_STATUS='A'"></asp:SqlDataSource>
 </asp:Content>
 

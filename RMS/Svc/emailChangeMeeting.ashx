@@ -113,11 +113,11 @@ public class emailChangeMeeting : IHttpHandler {
             {
                 //ezMail.MailFrom = StrMailForm;
                 //ezMail.MailSubject = StrMailSubject;
-                EasyMail.FNC_SEND_EMAIL( "kasiya.b@betimes.biz;suphachai.l@betimes.biz", dtsMain.Tables["TR_MEETING"].Rows[0]["MEETING_TITLE"].ToString(), @"เรียนท่านผู้ดูแลระบบ
-                ห้องประชุม  : aaaaaaaa
-                วันที่เริ่ม:aaaaaaa เวลา : aaaaaaa	
-                วันที่สิ้นสุด: aaaaaa เวลา : aaaaaaaaa
-                ตรวจสอบรายการจองห้องประชุมได้ที่ : """, "");
+//                EasyMail.FNC_SEND_EMAIL( "kasiya.b@betimes.biz;suphachai.l@betimes.biz", dtsMain.Tables["TR_MEETING"].Rows[0]["MEETING_TITLE"].ToString(), @"เรียนท่านผู้ดูแลระบบ
+//                ห้องประชุม  : aaaaaaaa
+//                วันที่เริ่ม:aaaaaaa เวลา : aaaaaaa	
+//                วันที่สิ้นสุด: aaaaaa เวลา : aaaaaaaaa
+//                ตรวจสอบรายการจองห้องประชุมได้ที่ : """, "");
 
             }
         }

@@ -74,15 +74,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="ScriptManager" runat="server" />
-    <div>&nbsp;</div>
-    <div style="padding-left: 2em; padding-right: 2em; padding-top: 2em; padding-bottom: 0em">
+ 
+    <div style="padding-left: 2em; padding-right: 2em; padding-top: 3em; padding-bottom: 0em">
         <span style="font-size: 23px">จัดการ Pop Up</span><span style="font-size: 20px; color: gray;"> (RMS_UT0508)</span>
     </div>
 
     <div class="form-group col-sm-12" style="margin-top: 10px;">
-        <div class="col-sm-offset-10 col-sm-6">
+        <div class="col-sm-12 text-right">
             <asp:Button ID="btnSave" runat="server" Text="บันทึก" CssClass="btn btn-success btn-80" OnClientClick="return ClientValidation();" OnClick="btnSave_Click" />
-            <asp:Button ID="btnBack" runat="server" Text="ยกเลิก" CssClass="btn btn-warning btn-80" OnClick="btnBack_Click" />
+            <asp:Button ID="btnBack" runat="server" Text="ย้อนกลับ" CssClass="btn btn-success btn-80" OnClientClick="window.location = 'RMSM_MDM_POPUP_INFO_ListView.aspx'; return false;"  Visible="false" />
+            <asp:Button ID="btnCancel" runat="server" Text="ยกเลิก" CssClass="btn btn-warning btn-80" />
         </div>
     </div>
 
@@ -100,7 +101,7 @@
                 <div id="Div1" class="form-group col-sm-12">
                     <label for="" class="col-sm-4 control-label">ข้อความ:</label>
                     <div class="col-sm-8">
-                        <dx:ASPxTextBox ID="ctlPOPUP_DETAIL" runat="server" Height="30" Width="100%"></dx:ASPxTextBox>
+                        <dx:ASPxTextBox ID="ctlPOPUP_MESSAGE" runat="server" Height="30" Width="100%"></dx:ASPxTextBox>
                     </div>
                 </div>
                   <div id="ROOM_ID" class="form-group col-sm-12">
@@ -160,8 +161,11 @@
         <asp:SqlDataSource ID="dsRMSM_MDM_POPUP_INFO_DetailView" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
             DeleteCommand=""
             SelectCommand="SELECT RMSM_MDM_POPUP_INFO.POPUP_NAME
+,RMSM_MDM_POPUP_INFO.POPUP_MESSAGE
+,RMSM_MDM_POPUP_INFO.ROOM_ID
 ,RMSM_MDM_POPUP_INFO.MENU_ID
 ,RMSM_MDM_POPUP_INFO.POPUP_STATUS
+,RMSM_MDM_POPUP_INFO.FONT_SIZE
 FROM [dbo].[RMSM_MDM_POPUP_INFO]
 LEFT JOIN [dbo].[RMSM_MDM_MENU_INFO] on
 [dbo].[RMSM_MDM_POPUP_INFO].MENU_ID = [dbo].[RMSM_MDM_MENU_INFO].MENU_ID

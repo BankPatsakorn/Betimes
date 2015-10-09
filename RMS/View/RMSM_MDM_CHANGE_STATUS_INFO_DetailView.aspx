@@ -74,30 +74,32 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="ScriptManager" runat="server" />
-    <div class="form-group col-sm-12" style="margin-top: 50px;">
-        <div class="col-sm-offset-10 col-sm-6">
+    <div style="padding-left: 2em; padding-right: 2em; padding-top: 3em; padding-bottom: 0em">
+        <span style="font-size: 23px">การเปลี่ยนสถานะห้องประชุม</span><span style="font-size: 20px; color: gray;"> (RMS_UT0507)</span>
+    </div>
+    <div class="form-group col-sm-12" style="margin-top: 10px;">
+        <div class="col-sm-12 text-right">
             <asp:Button ID="btnSave" runat="server" Text="บันทึก" CssClass="btn btn-success btn-80" OnClientClick="return ClientValidation();" OnClick="btnSave_Click" />
-              <asp:Button ID="btnBack" runat="server" Text="ย้อนกลับ" CssClass="btn btn-success btn-80" OnClick="btnBack_Click" />
+            <asp:Button ID="btnBack" runat="server" Text="ย้อนกลับ" CssClass="btn btn-success btn-80" OnClientClick="window.location = 'RMSM_MDM_CHANGE_STATUS_INFO_ListView.aspx'; return false;" Visible="false" />
             <asp:Button ID="Button1" runat="server" Text="ยกเลิก" CssClass="btn btn-warning btn-80" OnClick="btnBack_Click" />
         </div>
     </div>
-    <div style="padding-left: 2em; padding-right: 2em; padding-top: 2em; padding-bottom: 2em">
-        <span style="font-size: 23px">การเปลี่ยนสถานะห้องประชุม</span><span style="font-size: 20px; color: gray;"> (RMS_UT0507)</span>
-    </div>
+
+    
 
     <div class="col-sm-12">
         <div class="row">
             <!--row 18-->
             <div class="col-sm-6">
                 <!--col 19-->
-                                    <!--col 40-->
-                                    <div id="MEETING_CODE" class="form-group col-sm-12">
-                                        <label for="" class="col-sm-4 control-label">รหัสการประชุม:</label>
-                                        <div class="col-sm-8">
-                                            <dx:ASPxTextBox ID="ctlMEETING_CODE" Enabled="False" Height="30" ForeColor="#000000" BackColor="#DDDDDD" runat="server" Width="100%"></dx:ASPxTextBox>
-                                        </div>
-                                    </div>
-                                
+                <!--col 40-->
+                <div id="MEETING_CODE" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">รหัสการประชุม:</label>
+                    <div class="col-sm-8">
+                        <dx:ASPxTextBox ID="ctlMEETING_CODE" Enabled="False" Height="30" ForeColor="#000000" BackColor="#DDDDDD" runat="server" Width="100%"></dx:ASPxTextBox>
+                    </div>
+                </div>
+
                 <div id="ROOM_ID" class="form-group col-sm-12">
                     <label for="" class="col-sm-4 control-label">ห้องประชุม <span style="color: red">*</span>:</label>
                     <div class="col-sm-8">
@@ -107,6 +109,7 @@
                             DataSourceID="dsRMSM_MDM_ROOM_INFO"
                             TextField="ROOM_NAME" ValueField="ROOM_ID"
                             Width="100%" IncrementalFilteringMode="StartsWith" />
+                        <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator1" ForeColor="Red" controltovalidate="ctlROOM_ID" errormessage="กรุณาเลือกห้องประชุม" />
                     </div>
                 </div>
             </div>
@@ -126,6 +129,7 @@
                                 </dx:ASPxDateEdit>
                             </ContentTemplate>
                         </asp:UpdatePanel>
+                         <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator2" ForeColor="Red" controltovalidate="ctlCHANGE_START_DATE" errormessage="กรุณาเลือกวันเริ่มต้น" />
                     </div>
                 </div>
             </div>
@@ -141,6 +145,7 @@
                                 </dx:ASPxDateEdit>
                             </ContentTemplate>
                         </asp:UpdatePanel>
+                         <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator3" ForeColor="Red" controltovalidate="ctlCHANGE_END_DATE" errormessage="กรุณาเลือกวันสิ้นสุด" />
                     </div>
                 </div>
             </div>
@@ -148,15 +153,15 @@
             <div class="col-sm-6">
                 <!--col 30-->
                 <div id="ROOM_STATUS" class="form-group col-sm-12">
-                                        <label for="" class="col-sm-4 control-label">สถานะห้องประชุม:</label>
-                                        <div class="col-sm-8">
-                                            <dx:ASPxRadioButtonList
-                                                ID="ctlROOM_STATUS" runat="server" DataSourceID="dsROOM_STATUS"
-                                                TextField="txt" ValueField="id" Border-BorderStyle="None"
-                                                RepeatColumns="4" RepeatLayout="Table">
-                                            </dx:ASPxRadioButtonList>
-                                        </div>
-                                    </div>
+                    <label for="" class="col-sm-4 control-label">สถานะห้องประชุม:</label>
+                    <div class="col-sm-8">
+                        <dx:ASPxRadioButtonList
+                            ID="ctlROOM_STATUS" runat="server" DataSourceID="dsROOM_STATUS"
+                            TextField="txt" ValueField="id" Border-BorderStyle="None"
+                            RepeatColumns="4" RepeatLayout="Table">
+                        </dx:ASPxRadioButtonList>
+                    </div>
+                </div>
             </div>
             <!--end col 32-->
         </div>
@@ -169,13 +174,10 @@
             DeleteCommand=""
             SelectCommand="SELECT RMSM_MDM_CHANGE_STATUS_INFO.ROOM_ID
 ,[dbo].[RMSM_MDM_ROOM_INFO].ROOM_NAME
+,RMSM_MDM_CHANGE_STATUS_INFO.CHANGE_STATUS
 ,RMSM_MDM_CHANGE_STATUS_INFO.CHANGE_START_DATE
 ,RMSM_MDM_CHANGE_STATUS_INFO.CHANGE_END_DATE
-,[dbo].[RMSM_MDM_CHANGE_STATUS_ROOM_INFO].[CHANGE_STATUS_ROOM_ID]
-,[dbo].[RMSM_MDM_CHANGE_STATUS_ROOM_INFO].[CHANGE_NAME] 
 FROM [dbo].[RMSM_MDM_CHANGE_STATUS_INFO]
-LEFT JOIN [dbo].[RMSM_MDM_CHANGE_STATUS_ROOM_INFO] on
-[dbo].[RMSM_MDM_CHANGE_STATUS_INFO].CHANGE_STATUS = [dbo].[RMSM_MDM_CHANGE_STATUS_ROOM_INFO].[CHANGE_STATUS_ROOM_ID]
 LEFT JOIN [dbo].[RMSM_MDM_ROOM_INFO] on
 [dbo].[RMSM_MDM_CHANGE_STATUS_INFO].ROOM_ID = [dbo].[RMSM_MDM_ROOM_INFO].ROOM_ID 
 WHERE CHANGE_STATUS_ID = @CHANGE_STATUS_ID"

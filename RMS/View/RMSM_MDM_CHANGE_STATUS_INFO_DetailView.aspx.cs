@@ -14,7 +14,7 @@ public partial class RMSM_MDM_CHANGE_STATUS_INFO_DetailView : System.Web.UI.Page
     //
 	string inputMainCHANGE_STATUS_ID="-1";
 	string key="CHANGE_STATUS_ID";
-
+    private ChangeStatusService service = new ChangeStatusService();
 
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -69,6 +69,7 @@ public partial class RMSM_MDM_CHANGE_STATUS_INFO_DetailView : System.Web.UI.Page
 		DataView dv = (DataView)dsRMSM_MDM_CHANGE_STATUS_INFO_DetailView.Select(DataSourceSelectArguments.Empty);
 		DataRowView drv = dv[0];
         ctlROOM_ID.Value = drv["ROOM_ID"].ToString();
+        ctlROOM_STATUS.SelectedIndex = int.Parse(drv["CHANGE_STATUS"].ToString());
 
         if (drv["CHANGE_START_DATE"] != null && drv["CHANGE_START_DATE"] != DBNull.Value)
             ctlCHANGE_START_DATE.Date = (DateTime)drv["CHANGE_START_DATE"];
@@ -107,6 +108,21 @@ public partial class RMSM_MDM_CHANGE_STATUS_INFO_DetailView : System.Web.UI.Page
 
     void Insert()
     {
+      
+            try
+            {
+                service.Insert(ctlROOM_STATUS.SelectedIndex, int.Parse(ctlROOM_ID.SelectedItem.Value.ToString()), ctlCHANGE_START_DATE.Date, ctlCHANGE_END_DATE.Date, DateTime.Now);
+
+                JS = "alert('บันทึกข้อมูลสำเร็จ');";
+                btnSave.Visible = false;
+                btnBack.Visible = true;
+            }
+            catch (Exception)
+            {
+               // JS = "alert('กรุณากรอกข้อมูลให้ครบ');";
+
+            }
+        
         //
       //  dsRMSM_MDM_CHANGE_STATUS_INFO_DetailView.InsertParameters.Clear();
       //  if (ctlROOM_ID.Value != null)
@@ -140,13 +156,23 @@ public partial class RMSM_MDM_CHANGE_STATUS_INFO_DetailView : System.Web.UI.Page
       //  int i = dsRMSM_MDM_CHANGE_STATUS_INFO_DetailView.Insert();
 
 
-		JS="alert('Inserted');";
-        btnSave.Visible = false;
-        btnBack.Visible = true;
     }
 
     void Update()
     {
+        try
+        {
+            service.Update(int.Parse(inputMainCHANGE_STATUS_ID), ctlROOM_STATUS.SelectedIndex, int.Parse(ctlROOM_ID.SelectedItem.Value.ToString()), ctlCHANGE_START_DATE.Date, ctlCHANGE_END_DATE.Date, DateTime.Now);
+
+            JS = "alert('บันทึกข้อมูลสำเร็จ');";
+            btnSave.Visible = false;
+            btnBack.Visible = true;
+        }
+        catch (Exception)
+        {
+            JS = "alert('ไม่สามารถบันทึกข้อมูลได้');";
+
+        }
         //
         //dsRMSM_MDM_CHANGE_STATUS_INFO_DetailView.UpdateParameters.Clear();
         //if (ctlROOM_ID.Value != null)
@@ -176,8 +202,6 @@ public partial class RMSM_MDM_CHANGE_STATUS_INFO_DetailView : System.Web.UI.Page
         //dsRMSM_MDM_CHANGE_STATUS_INFO_DetailView.UpdateParameters.Add("CHANGE_STATUS_ID", System.Data.DbType.Int32, inputMainCHANGE_STATUS_ID);
         //int i = dsRMSM_MDM_CHANGE_STATUS_INFO_DetailView.Update();
 
-
-		JS="alert('Updated');";
     }
 
 

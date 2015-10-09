@@ -8,43 +8,51 @@ using System.Web.UI.WebControls;
 
 public partial class RMSM_MDM_CHANGE_STATUS_INFO_ListView : System.Web.UI.Page
 {
-	public string JS="";
+    public string JS = "";
     System.Globalization.CultureInfo ct_en = new System.Globalization.CultureInfo("en-US");
     string mode = "n";
     //
-string inputCHANGE_STATUS_ID="-1";
-	string key="CHANGE_STATUS_ID";
+    string inputCHANGE_STATUS_ID = "-1";
+    string key = "CHANGE_STATUS_ID";
 
 
     protected void Page_Init(object sender, EventArgs e)
     {
         //
-//Grid RMSM_MDM_CHANGE_STATUS_INFO_ListView 
-dsRMSM_MDM_CHANGE_STATUS_INFO_ListView.SelectParameters.Clear();
+        //Grid RMSM_MDM_CHANGE_STATUS_INFO_ListView 
+        dsRMSM_MDM_CHANGE_STATUS_INFO_ListView.SelectParameters.Clear();
         if (Request.QueryString["CHANGE_STATUS_ID"] != null && Request.QueryString["CHANGE_STATUS_ID"] != "-1")
         {
             inputCHANGE_STATUS_ID = Request.QueryString["CHANGE_STATUS_ID"];
         }
-dsRMSM_MDM_CHANGE_STATUS_INFO_ListView.SelectParameters.Add("CHANGE_STATUS_ID", System.Data.DbType.Int32, inputCHANGE_STATUS_ID);
+        dsRMSM_MDM_CHANGE_STATUS_INFO_ListView.SelectParameters.Add("CHANGE_STATUS_ID", System.Data.DbType.Int32, inputCHANGE_STATUS_ID);
 
+        dsRMSM_MDM_CHANGE_STATUS_INFO_ListView.SelectParameters.Add("ROOM_ID", System.Data.DbType.String, string.Empty);
+        dsRMSM_MDM_CHANGE_STATUS_INFO_ListView.SelectParameters["ROOM_ID"].ConvertEmptyStringToNull = false;
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-		JS="";
+        JS = "";
         if (Request.QueryString[key] != null && Request.QueryString[key] != "-1")
         {
             mode = "e";
         }
         if (!IsPostBack)
         {
+
+            setLabelCountDataFound();
             if (mode == "e")
                 PopulateEditData();
             else if (mode == "n")
                 PopulateNewData();
-            
+
         }
     }
-
+    private void setLabelCountDataFound()
+    {
+        System.Data.DataView dv = (DataView)dsRMSM_MDM_CHANGE_STATUS_INFO_ListView.Select(DataSourceSelectArguments.Empty);
+        lblNumberInGrid.Text = "Found " + dv.Count.ToString() + " items";
+    }
     protected void btnSave_Click(object sender, EventArgs e)
     {
         if (mode == "e")
@@ -54,9 +62,20 @@ dsRMSM_MDM_CHANGE_STATUS_INFO_ListView.SelectParameters.Add("CHANGE_STATUS_ID", 
 
     }
 
-    protected void btnBack_Click(object sender, EventArgs e)
+    protected void btnSearch_Click(object sender, EventArgs e)
     {
+        if (ctlROOM_ID.SelectedIndex > 0)
+        {
+            dsRMSM_MDM_CHANGE_STATUS_INFO_ListView.SelectParameters["ROOM_ID"].DefaultValue = ctlROOM_ID.SelectedItem.Value.ToString();
+        }
+        else
+        {
 
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+      
+        }
+        dsRMSM_MDM_CHANGE_STATUS_INFO_ListView.DataBind();
+        setLabelCountDataFound();
     }
 
     void PopulateEditData()
@@ -92,14 +111,14 @@ dsRMSM_MDM_CHANGE_STATUS_INFO_ListView.SelectParameters.Add("CHANGE_STATUS_ID", 
     {
         //{Insert}
 
-		JS="alert('Inserted');";
+        JS = "alert('Inserted');";
     }
 
     void Update()
     {
         //{Update}
 
-		JS="alert('Updated');";
+        JS = "alert('Updated');";
     }
 
 

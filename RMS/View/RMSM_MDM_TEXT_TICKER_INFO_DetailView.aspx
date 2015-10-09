@@ -79,9 +79,10 @@
         <span style="font-size: 23px">จัดการตัววิ่ง</span><span style="font-size: 20px; color: gray;"> (RMS_UT0509)</span>
     </div>
     <div class="form-group col-sm-12" style="margin-top: 10px;">
-        <div class="col-sm-offset-10 col-sm-6">
+        <div class="col-sm-12 text-right">
             <asp:Button ID="btnSave" runat="server" Text="บันทึก" CssClass="btn btn-success btn-80" OnClientClick="return ClientValidation();" OnClick="btnSave_Click" />
-            <asp:Button ID="btnBack" runat="server" Text="ยกเลิก" CssClass="btn btn-warning btn-80" OnClick="btnBack_Click" />
+            <asp:Button ID="btnBack" runat="server" Text="ย้อนกลับ" CssClass="btn btn-success btn-80" OnClientClick="window.location = 'RMSM_MDM_TEXT_TICKER_INFO_ListView.aspx'; return false;"  Visible="false" />
+            <asp:Button ID="btnCancel" runat="server" Text="ยกเลิก" CssClass="btn btn-warning btn-80" />
         </div>
     </div>
     <div class="col-sm-12">
@@ -140,7 +141,7 @@
             SelectCommand="SELECT [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_TICKER_ID]
 ,[dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_DESC]
 ,case when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_STATUS]=0 then 'ใช้งาน' when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_STATUS]=1 then 'ไม่ใช้งาน' end as TEXT_STATUS
-,case when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED]=0 then 'ปกติ' when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED]=1 then 'ปานกลาง' when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED]=2 then 'เร็ว' end as TEXT_SPEED
+,case when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED]=0 then 'ช้า' when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED]=1 then 'ปานกลาง' when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED]=2 then 'เร็ว' end as TEXT_SPEED
 FROM [dbo].[RMSM_MDM_TEXT_TICKER_INFO]
 WHERE  [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[RECORD_STATUS] = 'A'">
             <DeleteParameters>
@@ -154,6 +155,7 @@ WHERE  [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[RECORD_STATUS] = 'A'">
             SelectCommand="SELECT RMSM_MDM_TEXT_TICKER_INFO.TEXT_DESC
 ,RMSM_MDM_TEXT_TICKER_INFO.TEXT_STATUS
 ,RMSM_MDM_TEXT_TICKER_INFO.TEXT_SPEED
+,RMSM_MDM_TEXT_TICKER_INFO.FONT_SIZE
 FROM [dbo].[RMSM_MDM_TEXT_TICKER_INFO]
 WHERE TEXT_TICKER_ID = @TEXT_TICKER_ID"
             InsertCommand=""

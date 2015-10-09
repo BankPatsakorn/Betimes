@@ -99,17 +99,17 @@
                                 <dx:ASPxTextBox ID="ctlPOPUP_DETAIL" runat="server" Height="30" Width="300"></dx:ASPxTextBox>
                             </div>
                         </div>
-                          <div id="ROOM_ID" class="form-group col-sm-12">
-                                        <label for="" class="col-sm-4 control-label">ห้องประชุม:</label>
-                                        <div class="col-sm-8">
-                                            <dx:ASPxComboBox
-                                                ID="ctlROOM_ID" runat="server"
-                                                DropDownStyle="DropDown" Height="30"
-                                                DataSourceID="dsRMSM_MDM_ROOM_INFO"
-                                                TextField="ROOM_NAME" ValueField="ROOM_ID"
-                                                Width="100%" IncrementalFilteringMode="StartsWith" />
-                                        </div>
-                                    </div>
+                        <div id="ROOM_ID" class="form-group col-sm-12">
+                            <label for="" class="col-sm-4 control-label">ห้องประชุม:</label>
+                            <div class="col-sm-8">
+                                <dx:ASPxComboBox
+                                    ID="ctlROOM_ID" runat="server"
+                                    DropDownStyle="DropDown" Height="30"
+                                    DataSourceID="dsRMSM_MDM_ROOM_INFO"
+                                    TextField="ROOM_NAME" ValueField="ROOM_ID"
+                                    Width="100%" IncrementalFilteringMode="StartsWith" />
+                            </div>
+                        </div>
                         <div id="MENU_ID" class="form-group col-sm-12">
                             <label for="" class="col-sm-4 control-label">เลือกหน้าจอที่แสดง:</label>
                             <div class="col-sm-8">
@@ -138,32 +138,29 @@
                 <!--button27-->
                 <input type="button" class='btn btn-primary' value=' เพิ่ม ' onclick="location = 'RMSM_MDM_POPUP_INFO_DetailView.aspx?id=-1';" />
                 <!--button25-->
-                <input type="button" value="ค้นหา" class="btn btn-primary" />
+                 <asp:Button Text="ค้นหา" CssClass="btn btn-primary" ID="btnSearch" OnClick="btnSearch_Click" runat="server" />
                 <!--button26-->
                 <asp:Button Text="ล้างข้อมูล" CssClass="btn btn-primary" ID="btnClear" OnClick="btnClear_Click" runat="server" />
                 <div>&nbsp;</div>
-        <div>
-               <label for="" style="color:gray;">พบ xxx รายการ</label>
-        </div>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
     <div>
         <div>
-
+             <label for="" class="foundNumberObject">พบ xxx รายการ</label>
             <asp:SqlDataSource ID="dsRMSM_MDM_MENU_INFO" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
                 SelectCommand="select MENU_NAME,MENU_ID from RMSM_MDM_MENU_INFO"></asp:SqlDataSource>
 
             <asp:SqlDataSource ID="dsPOPUP_STATUS" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
                 SelectCommand="select * from (select '-1' id, 'กรุณาเลือก' txt  union all select '1','ใช้งาน'  union all select '2','ไม่ใช้งาน' ) aa where id <> '-1'"></asp:SqlDataSource>
-
+           <%-- OnRowDeleting="viewRMSM_MDM_POPUP_INFO_ListView_Row_Command_Deleting"--%>
             <dx:ASPxGridView ID="viewRMSM_MDM_POPUP_INFO_ListView" runat="server" Width="100%"
                 AutoGenerateColumns="False" Styles-AlternatingRow-BackColor="White" Styles-Row-BackColor="#D9EDF7"
-                DataSourceID="dsRMSM_MDM_POPUP_INFO_ListView" KeyFieldName="POPUP_ID" ClientInstanceName="viewRMSM_MDM_POPUP_INFO_ListView" Theme="Metropolis">
+                DataSourceID="dsRMSM_MDM_POPUP_INFO_ListView"  EnableCallBacks="true" KeyFieldName="POPUP_ID" ClientInstanceName="viewRMSM_MDM_POPUP_INFO_ListView" Theme="Metropolis">
                 <Columns>
 
                     <dx:GridViewCommandColumn SelectAllCheckboxMode="Page" Caption="ลบ" ShowClearFilterButton="True"
-                        ShowDeleteButton="True" ShowSelectCheckbox="False" ButtonType="Image" VisibleIndex="0">
+                        ShowDeleteButton="True" Name="DeleteRow" ShowSelectCheckbox="False" ButtonType="Image" VisibleIndex="0">
                     </dx:GridViewCommandColumn>
                     <dx:GridViewDataTextColumn FieldName="POPUP_ID" ReadOnly="True" Visible="False" VisibleIndex="2">
                         <EditFormSettings Visible="False" />
@@ -175,19 +172,19 @@
                         </DataItemTemplate>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="ชื่อ Pop UP" FieldName="POPUP_NAME" VisibleIndex="1">
+                    <dx:GridViewDataTextColumn Caption="ชื่อ Pop UP" Width="20%" FieldName="POPUP_NAME" VisibleIndex="1">
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="ข้อความ" FieldName="POPUP_NAME" VisibleIndex="2">
+                    <dx:GridViewDataTextColumn Caption="ข้อความ" Width="30%"  FieldName="POPUP_MESSAGE" VisibleIndex="2">
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="ห้องประชุม" FieldName="MEETING_ROOM_NAME" VisibleIndex="3">
+                    <dx:GridViewDataTextColumn Caption="ห้องประชุม" Width="15%" FieldName="MEETING_ROOM_NAME" VisibleIndex="3">
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="หน้าจอที่แสดง" FieldName="MENU_NAME" VisibleIndex="4">
+                    <dx:GridViewDataTextColumn Caption="หน้าจอที่แสดง" Width="20%" FieldName="MENU_NAME" VisibleIndex="4">
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataSpinEditColumn Caption="สถานะการใช้งาน" FieldName="POPUP_STATUS" VisibleIndex="5">
+                    <dx:GridViewDataSpinEditColumn Caption="สถานะการใช้งาน" Width="5%" FieldName="POPUP_STATUS" VisibleIndex="5">
                     </dx:GridViewDataSpinEditColumn>
                 </Columns>
                 <Settings ShowFilterRow="false" ShowFilterRowMenu="true" ShowHeaderFilterButton="false" ShowGroupPanel="False" />
@@ -209,21 +206,35 @@
             DeleteCommand="DELETE FROM RMSM_MDM_POPUP_INFO WHERE [POPUP_ID] = @POPUP_ID"
             SelectCommand="SELECT [dbo].[RMSM_MDM_POPUP_INFO].[POPUP_ID]
 ,[dbo].[RMSM_MDM_POPUP_INFO].[POPUP_NAME]
+,[dbo].[RMSM_MDM_POPUP_INFO].[POPUP_MESSAGE]
+,[dbo].[RMSM_MDM_ROOM_INFO].[ROOM_NAME] as MEETING_ROOM_NAME
 ,[dbo].[RMSM_MDM_MENU_INFO].[MENU_NAME]
-            ,'ห้องประชุม ศทก.' as MEETING_ROOM_NAME
 ,case when [dbo].[RMSM_MDM_POPUP_INFO].[POPUP_STATUS]=0 then 'ใช้งาน' when [dbo].[RMSM_MDM_POPUP_INFO].[POPUP_STATUS]=1 then 'ไม่ใช้งาน' end as POPUP_STATUS
 FROM [dbo].[RMSM_MDM_POPUP_INFO]
 LEFT JOIN [dbo].[RMSM_MDM_MENU_INFO] on
 [dbo].[RMSM_MDM_POPUP_INFO].[MENU_ID] = [dbo].[RMSM_MDM_MENU_INFO].[MENU_ID]
-WHERE [dbo].[RMSM_MDM_POPUP_INFO].[RECORD_STATUS] = 'A'">
+LEFT JOIN [dbo].[RMSM_MDM_ROOM_INFO] on
+[dbo].[RMSM_MDM_POPUP_INFO].[ROOM_ID] = [dbo].[RMSM_MDM_ROOM_INFO].[ROOM_ID]
+WHERE [dbo].[RMSM_MDM_POPUP_INFO].[RECORD_STATUS] = 'A' AND 
+[POPUP_NAME] LIKE '%'+@POPUP_NAME+'%' AND 
+[POPUP_MESSAGE] LIKE '%'+@POPUP_MESSAGE+'%' AND
+[dbo].[RMSM_MDM_POPUP_INFO].[ROOM_ID] LIKE '%'+@ROOM_ID+'%' AND
+[dbo].[RMSM_MDM_POPUP_INFO].[MENU_ID] LIKE '%'+@MENU_ID+'%' AND
+[POPUP_STATUS]  LIKE '%'+@POPUP_STATUS+'%'  ">
+
             <DeleteParameters>
                 <asp:Parameter Name="POPUP_ID" Type="Int32" />
             </DeleteParameters>
             <SelectParameters>
+                <asp:Parameter Name="POPUP_NAME" ConvertEmptyStringToNull="false" DefaultValue="" Type="String" />
+                <asp:Parameter Name="POPUP_MESSAGE" ConvertEmptyStringToNull="false" DefaultValue="" Type="String" />
+                <asp:Parameter Name="POPUP_STATUS" ConvertEmptyStringToNull="false" DefaultValue="" Type="String" />
+                <asp:Parameter Name="ROOM_ID" ConvertEmptyStringToNull="false" DefaultValue="" Type="Int32" />
+                <asp:Parameter Name="MENU" ConvertEmptyStringToNull="false" DefaultValue="" Type="Int32" />
+           
             </SelectParameters>
         </asp:SqlDataSource>
-         <asp:SqlDataSource ID="dsRMSM_MDM_ROOM_INFO" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+        <asp:SqlDataSource ID="dsRMSM_MDM_ROOM_INFO" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
             SelectCommand="select ROOM_NAME,ROOM_ID from RMSM_MDM_ROOM_INFO"></asp:SqlDataSource>
     </div>
 </asp:Content>
-

@@ -81,7 +81,7 @@
     </div>
 
     <div class="form-group col-sm-12" style="margin-top: 10px;">
-        <div class="col-sm-offset-10 col-sm-6">
+        <div class="col-sm-12 text-right">
             <asp:Button ID="btnSave" runat="server" Text="บันทึก" CssClass="btn btn-success btn-80" OnClientClick="return ClientValidation();" OnClick="btnSave_Click" />
             <asp:Button ID="btnBack" runat="server" Text="ยกเลิก" CssClass="btn btn-warning btn-80" OnClick="btnBack_Click" />
         </div>
@@ -138,7 +138,7 @@
                         <dx:GridViewDataTextColumn FieldName="MEETING_ID" ReadOnly="True" Visible="False" VisibleIndex="2">
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn VisibleIndex="1" CellStyle-HorizontalAlign="Center" Caption="แก้ไข">
+                        <dx:GridViewDataTextColumn VisibleIndex="1" Width="5%" CellStyle-HorizontalAlign="Center" Caption="แก้ไข">
                             <DataItemTemplate>
                                 <a target="_blank" onclick="window.location='RMSM_RMM_MEETING_CANCLE_DetailView.aspx?MEETING_ID=<%#Eval("MEETING_ID") %>';">
                                     <img src="images/edit.png" style="border: none" alt="edit" /></a>

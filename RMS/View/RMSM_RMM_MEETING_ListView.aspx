@@ -151,12 +151,12 @@
                 <Columns>
 
                     <dx:GridViewCommandColumn   SelectAllCheckboxMode="Page" ShowClearFilterButton="False"
-                        ShowDeleteButton="true" ShowSelectCheckbox="False" Caption="ลบ" ButtonType="Image" VisibleIndex="0">
+                        ShowDeleteButton="true" ShowSelectCheckbox="False" Width="5%" Caption="ลบ" ButtonType="Image" VisibleIndex="0">
                     </dx:GridViewCommandColumn>
                     <dx:GridViewDataTextColumn FieldName="MEETING_ID" ReadOnly="True" Visible="False" VisibleIndex="2">
                         <EditFormSettings Visible="False" />
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn CellStyle-HorizontalAlign="Center" VisibleIndex="1" Caption="แก้ไข">
+                    <dx:GridViewDataTextColumn CellStyle-HorizontalAlign="Center" Width="5%" VisibleIndex="1" Caption="แก้ไข">
                         <DataItemTemplate >
                             <a target="_self" href="RMSM_RMM_MEETING_DetailView.aspx?MEETING_ID=<%#Eval("MEETING_ID") %>">
                                 <img src="images/edit.png" style="border: none" alt="edit" /></a>

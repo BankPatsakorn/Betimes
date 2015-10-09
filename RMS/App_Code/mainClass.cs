@@ -118,6 +118,17 @@ public class mainClass : System.Web.UI.Page
         Cmd.ExecuteNonQuery();
         Cmd.Dispose();
     }
+    //public int ExecNonQueryReturnInt(string pstrSql)
+    //{
+    //    if (ConX.State == ConnectionState.Closed)
+    //    {
+    //        ConX.Open();
+    //    }
+    //    OleDbCommand Cmd = new OleDbCommand(pstrSql, ConX);
+    //    Cmd.ExecuteNonQuery();
+    //    Cmd.Dispose();
+    //    return Cmd.ExecuteNonQuery();
+    //}
     public void Initial_RowParentX(DataTable pdttMain)
     {
         DataRow dtrTemp = pdttMain.NewRow();

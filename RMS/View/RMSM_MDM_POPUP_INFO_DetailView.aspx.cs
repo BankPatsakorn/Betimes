@@ -12,10 +12,10 @@ public partial class RMSM_MDM_POPUP_INFO_DetailView : System.Web.UI.Page
     System.Globalization.CultureInfo ct_en = new System.Globalization.CultureInfo("en-US");
     string mode = "n";
     //
-string inputPOPUP_ID="-1";
+    string inputPOPUP_ID="-1";
 	string inputMainPOPUP_ID="-1";
 	string key="POPUP_ID";
-
+    private PopUpService service = new PopUpService();
 
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -44,8 +44,7 @@ string inputPOPUP_ID="-1";
         }
         if (!IsPostBack)
         {
-            ctlPOPUP_STATUS.SelectedIndex = 0;
-            ctlTEXT_SIZE.SelectedIndex = 1;
+            setDefault();
             if (mode == "e")
                 PopulateEditData();
             else if (mode == "n")
@@ -53,7 +52,11 @@ string inputPOPUP_ID="-1";
             
         }
     }
-
+    private void setDefault()
+    {
+        ctlPOPUP_STATUS.SelectedIndex = 0;
+        ctlTEXT_SIZE.SelectedIndex = 1;
+    }
     protected void btnSave_Click(object sender, EventArgs e)
     {
         if (mode == "e")
@@ -77,11 +80,13 @@ string inputPOPUP_ID="-1";
 		DataView dv = (DataView)dsRMSM_MDM_POPUP_INFO_DetailView.Select(DataSourceSelectArguments.Empty);
 		DataRowView drv = dv[0];
         ctlPOPUP_NAME.Value = drv["POPUP_NAME"].ToString();
-
+        ctlPOPUP_MESSAGE.Value = drv["POPUP_MESSAGE"].ToString();
+        ctlROOM_ID.Value = drv["ROOM_ID"].ToString();
         ctlMENU_ID.Value = drv["MENU_ID"].ToString();
 
-        ctlPOPUP_STATUS.Value = drv["POPUP_STATUS"].ToString();
-
+       // ctlPOPUP_STATUS.Value = drv["POPUP_STATUS"].ToString();
+        ctlPOPUP_STATUS.SelectedIndex = int.Parse(drv["POPUP_STATUS"].ToString());
+        ctlTEXT_SIZE.SelectedIndex = int.Parse(drv["FONT_SIZE"].ToString());
 
         SetValidation();
         SetFormatting();
@@ -111,45 +116,76 @@ string inputPOPUP_ID="-1";
 
     void Insert()
     {
+        if (!string.IsNullOrEmpty(ctlPOPUP_NAME.Text))
+        {
+            try
+            {
+                service.Insert(ctlPOPUP_NAME.Text, ctlPOPUP_MESSAGE.Text, int.Parse(ctlROOM_ID.SelectedItem.Value.ToString()), int.Parse(ctlMENU_ID.SelectedItem.Value.ToString()), ctlPOPUP_STATUS.SelectedIndex, ctlTEXT_SIZE.SelectedIndex, DateTime.Now);
+
+                JS = "alert('บันทึกข้อมูลสำเร็จ');";
+                btnSave.Visible = false;
+                btnBack.Visible = true;
+            }
+            catch (Exception)
+            {
+                JS = "alert('ไม่สามารถบันทึกข้อมูลได้ ก');";
+
+            }
+        }
         //
-		dsRMSM_MDM_POPUP_INFO_DetailView.InsertParameters.Clear();
-        dsRMSM_MDM_POPUP_INFO_DetailView.InsertParameters.Add("POPUP_NAME", System.Data.DbType.String, ctlPOPUP_NAME.Text);
+        //dsRMSM_MDM_POPUP_INFO_DetailView.InsertParameters.Clear();
+        //dsRMSM_MDM_POPUP_INFO_DetailView.InsertParameters.Add("POPUP_NAME", System.Data.DbType.String, ctlPOPUP_NAME.Text);
 
-        if (ctlMENU_ID.Value != null)
-            dsRMSM_MDM_POPUP_INFO_DetailView.InsertParameters.Add("MENU_ID", System.Data.DbType.Int32, ctlMENU_ID.Value.ToString());
-        else
-            dsRMSM_MDM_POPUP_INFO_DetailView.InsertParameters.Add("MENU_ID", System.Data.DbType.Int32, null); 
+        //if (ctlMENU_ID.Value != null)
+        //    dsRMSM_MDM_POPUP_INFO_DetailView.InsertParameters.Add("MENU_ID", System.Data.DbType.Int32, ctlMENU_ID.Value.ToString());
+        //else
+        //    dsRMSM_MDM_POPUP_INFO_DetailView.InsertParameters.Add("MENU_ID", System.Data.DbType.Int32, null); 
 
-        if (ctlPOPUP_STATUS.Value != null)
-            dsRMSM_MDM_POPUP_INFO_DetailView.InsertParameters.Add("POPUP_STATUS", System.Data.DbType.Int32, ctlPOPUP_STATUS.Value.ToString());
-        else
-            dsRMSM_MDM_POPUP_INFO_DetailView.InsertParameters.Add("POPUP_STATUS", System.Data.DbType.Int32, null); 
+        //if (ctlPOPUP_STATUS.Value != null)
+        //    dsRMSM_MDM_POPUP_INFO_DetailView.InsertParameters.Add("POPUP_STATUS", System.Data.DbType.Int32, ctlPOPUP_STATUS.Value.ToString());
+        //else
+        //    dsRMSM_MDM_POPUP_INFO_DetailView.InsertParameters.Add("POPUP_STATUS", System.Data.DbType.Int32, null); 
 
-		int i = dsRMSM_MDM_POPUP_INFO_DetailView.Insert();
+        //int i = dsRMSM_MDM_POPUP_INFO_DetailView.Insert();
 
 
-		JS="alert('Inserted');";
+        //JS="alert('Inserted');";
     }
 
     void Update()
     {
+        
+            try
+            {
+                service.Update(inputMainPOPUP_ID, ctlPOPUP_NAME.Text, ctlPOPUP_MESSAGE.Text, int.Parse(ctlROOM_ID.SelectedItem.Value.ToString()), int.Parse(ctlMENU_ID.SelectedItem.Value.ToString()), ctlPOPUP_STATUS.SelectedIndex, ctlTEXT_SIZE.SelectedIndex, DateTime.Now);
+
+                JS = "alert('แก้ไขข้อมูลสำเร็จ');";
+                btnSave.Visible = false;
+                btnBack.Visible = true;
+            }
+            catch (Exception)
+            {
+                JS = "alert('ไม่สามารถแก้ไขข้อมูลได้');";
+
+            }
+        
         //
-		dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Clear();
-        dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Add("POPUP_NAME", System.Data.DbType.String, ctlPOPUP_NAME.Text);
-        if (ctlMENU_ID.Value != null)
-            dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Add("MENU_ID", System.Data.DbType.Int32, ctlMENU_ID.Value.ToString());
-        else
-            dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Add("MENU_ID", System.Data.DbType.Int32, null); 
-        if (ctlPOPUP_STATUS.Value != null)
-            dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Add("POPUP_STATUS", System.Data.DbType.Int32, ctlPOPUP_STATUS.Value.ToString());
-        else
-            dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Add("POPUP_STATUS", System.Data.DbType.Int32, null); 
+        //dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Clear();
+        //dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Add("POPUP_NAME", System.Data.DbType.String, ctlPOPUP_NAME.Text);
+        //if (ctlMENU_ID.Value != null)
+        //    dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Add("MENU_ID", System.Data.DbType.Int32, ctlMENU_ID.Value.ToString());
+        //else
+        //    dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Add("MENU_ID", System.Data.DbType.Int32, null); 
+        //if (ctlPOPUP_STATUS.Value != null)
+        //    dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Add("POPUP_STATUS", System.Data.DbType.Int32, ctlPOPUP_STATUS.Value.ToString());
+        //else
+        //    dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Add("POPUP_STATUS", System.Data.DbType.Int32, null); 
 
-		dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Add("POPUP_ID", System.Data.DbType.Int32, inputMainPOPUP_ID);
-		int i = dsRMSM_MDM_POPUP_INFO_DetailView.Update();
+        //dsRMSM_MDM_POPUP_INFO_DetailView.UpdateParameters.Add("POPUP_ID", System.Data.DbType.Int32, inputMainPOPUP_ID);
+        //int i = dsRMSM_MDM_POPUP_INFO_DetailView.Update();
 
 
-		JS="alert('Updated');";
+        //JS="alert('Updated');";
     }
 
 

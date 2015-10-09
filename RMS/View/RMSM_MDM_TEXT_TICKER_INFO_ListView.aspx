@@ -119,21 +119,19 @@
                 <!--button27-->
                 <input type="button" class='btn btn-primary' value=' เพิ่ม ' onclick="location = 'RMSM_MDM_TEXT_TICKER_INFO_DetailView.aspx?id=-1';" />
                 <!--button25-->
-                <input type="button" value="ค้นหา" class="btn btn-primary" />
+                 <asp:Button Text="ค้นหา" CssClass="btn btn-primary" ID="btnSearch" OnClick="btnSearch_Click" runat="server" />
                 <!--button26-->
                 <%--<input type="button" value="ล้างข้อมูล" class="btn btn-primary" />--%>
                 <asp:Button Text="ล้างข้อมูล" ID="btnClear" runat="server" CssClass="btn btn-primary" OnClick="btnClear_Click" />
                 <div>&nbsp;</div>
-        <div>
-               <label for="" style="color:gray;">พบ xxx รายการ</label>
-        </div>
+    
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
     <div>
         <div>
 
-
+            <label for="" class="foundNumberObject">พบ xxx รายการ</label>
             <dx:ASPxGridView ID="viewRMSM_MDM_TEXT_TICKER_INFO_ListView" runat="server" Width="100%"
                 AutoGenerateColumns="False" Styles-AlternatingRow-BackColor="White" Styles-Row-BackColor="#D9EDF7"
                 DataSourceID="dsRMSM_MDM_TEXT_TICKER_INFO_ListView" KeyFieldName="TEXT_TICKER_ID" ClientInstanceName="viewRMSM_MDM_TEXT_TICKER_INFO_ListView" Theme="Metropolis">
@@ -155,10 +153,10 @@
                     <dx:GridViewDataTextColumn Caption="รายละเอียดตัววิ่ง" FieldName="TEXT_DESC" VisibleIndex="3">
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="สถานะการใช้งาน" FieldName="TEXT_STATUS" VisibleIndex="4">
+                    <dx:GridViewDataTextColumn Caption="สถานะการใช้งาน" Width="10%" FieldName="TEXT_STATUS" VisibleIndex="4">
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn Caption="ความเร็วของตัววิ่ง" FieldName="TEXT_SPEED" VisibleIndex="5">
+                    <dx:GridViewDataTextColumn Caption="ความเร็วของตัววิ่ง" Width="10%" FieldName="TEXT_SPEED" VisibleIndex="5">
                     </dx:GridViewDataTextColumn>
                 </Columns>
                 <Settings ShowFilterRow="false" ShowFilterRowMenu="true" ShowHeaderFilterButton="false" ShowGroupPanel="False" />
@@ -181,13 +179,19 @@
             SelectCommand="SELECT [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_TICKER_ID]
 ,[dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_DESC]
 ,case when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_STATUS]=0 then 'ใช้งาน' when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_STATUS]=1 then 'ไม่ใช้งาน' end as TEXT_STATUS
-,case when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED]=0 then 'ปกติ' when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED]=1 then 'ปานกลาง' when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED]=2 then 'เร็ว' end as TEXT_SPEED
+,case when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED]=0 then 'ช้า' when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED]=1 then 'ปานกลาง' when [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED]=2 then 'เร็ว' end as TEXT_SPEED
 FROM [dbo].[RMSM_MDM_TEXT_TICKER_INFO]
-WHERE  [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[RECORD_STATUS] = 'A'">
+ WHERE  [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[RECORD_STATUS] = 'A' AND
+ [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_DESC] LIKE '%'+@TEXT_DESC+'%' AND 
+ [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_STATUS] LIKE '%'+@TEXT_STATUS+'%' AND 
+ [dbo].[RMSM_MDM_TEXT_TICKER_INFO].[TEXT_SPEED] LIKE '%'+@TEXT_SPEED+'%' ">
             <DeleteParameters>
                 <asp:Parameter Name="TEXT_TICKER_ID" Type="Int32" />
             </DeleteParameters>
             <SelectParameters>
+                <asp:Parameter Name="TEXT_DESC" ConvertEmptyStringToNull="false" DefaultValue="" Type="String" />
+                <asp:Parameter Name="TEXT_STATUS" ConvertEmptyStringToNull="false" DefaultValue="" Type="Int32" />
+                <asp:Parameter Name="TEXT_SPEED" ConvertEmptyStringToNull="false" DefaultValue="" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
         <asp:SqlDataSource ID="dsTEXT_STATUS" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"

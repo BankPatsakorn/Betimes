@@ -8,23 +8,25 @@
 
 <%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.ASPxSpellChecker.v14.1, Version=14.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxSpellChecker" tagprefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.ASPxSpellChecker.v14.1, Version=14.1.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxSpellChecker" TagPrefix="dx" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">
-            .dis-ctl {
-               background-color:#DDDDDD;
-            }
-            .control-label {
-               width:150px;
-               height: 30px;
-            }
+        .dis-ctl
+        {
+            background-color: #DDDDDD;
+        }
 
-</style>
+        .control-label
+        {
+            width: 150px;
+            height: 30px;
+        }
+    </style>
     <script type="text/javascript">
-		var lkuValueId="";
-		var lkuLabelId="";
-		var selectedPopupView;
+        var lkuValueId = "";
+        var lkuLabelId = "";
+        var selectedPopupView;
         $(document).ready(function () {
             $('.fancyBox').fancybox({
                 'type': 'iframe',
@@ -32,15 +34,15 @@
                 'height': 500,
                 onClosed: function () {
                     //location.reload();
-					selectedPopupView.Refresh();
+                    selectedPopupView.Refresh();
                 }
             });
-			$('.fancyBoxLku').fancybox({
+            $('.fancyBoxLku').fancybox({
                 'type': 'iframe',
                 'width': 900,
                 'height': 500,
                 onClosed: function () {
-                    
+
                 }
             });
 
@@ -51,13 +53,13 @@
             return ASPxClientEdit.ValidateGroup("");
         }
 
-		function OpenLku(id, href, valId, lblId) {
-			lkuValueId = valId;
-			lkuLabelId = lblId;
+        function OpenLku(id, href, valId, lblId) {
+            lkuValueId = valId;
+            lkuLabelId = lblId;
             $("#" + id).attr("href", href);
             $("#" + id).click();
         }
-		function SetLku(val, label) {
+        function SetLku(val, label) {
             $("#" + lkuValueId).val(val);
             $("#" + lkuLabelId).val(label);
         }
@@ -65,87 +67,99 @@
         function OpenChildDetail(id, href, viewName) {
             $("#" + id).attr("href", href);
             $("#" + id).click();
-			selectedPopupView=viewName;
+            selectedPopupView = viewName;
         }
     </script>
-    
+
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<asp:ScriptManager ID="ScriptManager" runat="server" />
-     <div class="form-group col-sm-12" style="margin-top: 20px;">
-<div class="col-sm-offset-10 col-sm-6">
-                        <asp:Button ID="btnSave" runat="server" Text="บันทึก" CssClass="btn btn-success btn-80" OnClientClick="return ClientValidation();" OnClick="btnSave_Click" />
-                        <asp:Button ID="btnBack" runat="server" Text="ยกเลิก" CssClass="btn btn-warning btn-80" OnClick="btnBack_Click" />
-                    </div>
-     </div>
-<div style="padding-left: 2em; padding-right: 2em; padding-top: 2em; padding-bottom: 2em">
-        <span style="font-size: 23px">จัดการอุปกรณ์การประชุม</span><span style="font-size: 20px;color:gray;"> (RMS_UT0502)</span>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <asp:ScriptManager ID="ScriptManager" runat="server" />
+    <div class="form-group col-sm-12" style="margin-top: 50px;">
+        <div class="col-sm-12 text-right">
+            <asp:Button ID="btnSave" runat="server" Text="บันทึก" CssClass="btn btn-success btn-80" OnClientClick="return ClientValidation();" OnClick="btnSave_Click" />
+            <asp:Button ID="btnBack" runat="server" Text="ย้อนกลับ" CssClass="btn btn-success btn-80" OnClientClick="history.go(-2);"  Visible="false" />
+            <asp:Button ID="btnCancel" runat="server" Text="ยกเลิก" CssClass="btn btn-warning btn-80" />
+        </div>
+    </div>
+    <div style="padding-left: 2em; padding-right: 2em; padding-top: 2em; padding-bottom: 2em">
+        <span style="font-size: 23px">โสตทัศนูปกรณ์</span><span style="font-size: 20px; color: gray;"> (RMS_UT0502)</span>
     </div>
 
-<div  class="col-sm-12">
-<div  class="row"> <!--row 18-->
-<div  class="col-sm-6"> <!--col 19-->
-<div ID="EQUIPMENT_CODE" class="form-group col-sm-12">
+    <div class="col-sm-12">
+        <div class="row">
+            <!--row 18-->
+            <div class="col-sm-6">
+                <!--col 19-->
+                <div id="EQUIPMENT_CODE" class="form-group col-sm-12">
                     <label for="" class="col-sm-4 control-label">รหัสอุปกรณ์:</label>
                     <div class="col-sm-8">
-<dx:ASPxTextBox ID="ctlEQUIPMENT_CODE" Enabled="False" Height="30" ForeColor="#000000" BackColor="#DDDDDD" runat="server" Width="750"></dx:ASPxTextBox>
-                        </div>
-    </div>
-<div ID="EQUIPMENT_NAME" class="form-group col-sm-12">
+                        <dx:ASPxTextBox ID="ctlEQUIPMENT_CODE" Enabled="False" Height="30" ForeColor="#000000" BackColor="#DDDDDD" runat="server" Width="100%"></dx:ASPxTextBox>
+                    </div>
+                </div>
+                <div id="EQUIPMENT_NAME" class="form-group col-sm-12">
                     <label for="" class="col-sm-4 control-label">ชื่ออุปกรณ์<span style="color: red">*</span>:</label>
                     <div class="col-sm-8">
-<dx:ASPxTextBox ID="ctlEQUIPMENT_NAME" runat="server" Height="30" Width="750"></dx:ASPxTextBox>
-                        </div>
-    </div>
-<div ID="COUNT_UNIT_ID" class="form-group col-sm-12">
+                        <dx:ASPxTextBox ID="ctlEQUIPMENT_NAME" runat="server" Height="30" Width="100%"></dx:ASPxTextBox>
+                        <asp:RequiredFieldValidator runat="server" id="reqctlEQUIPMENT_NAME" ForeColor="Red" controltovalidate="ctlEQUIPMENT_NAME" errormessage="กรุณากรอกชื่ออุปกรณ์" />
+                    </div>
+                </div>
+                 <div id="EQUIPMENT_AMOUNT" class="form-group col-sm-12">
+                    <label for="" class="col-sm-4 control-label">จำนวน<span style="color: red">*</span>:</label>
+                    <div class="col-sm-8">
+                        <dx:ASPxTextBox ID="ctlEQUIPMENT_AMOUNT" runat="server" Height="30" Width="100%" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></dx:ASPxTextBox>
+                        <asp:RequiredFieldValidator runat="server" id="RequiredFieldValidator1" ForeColor="Red" controltovalidate="ctlEQUIPMENT_AMOUNT" errormessage="กรุณากรอกจำนวน" />
+                    </div>
+                </div>
+                <div id="COUNT_UNIT_ID" class="form-group col-sm-12">
                     <label for="" class="col-sm-4 control-label">หน่วยนับ:</label>
                     <div class="col-sm-8">
-<dx:ASPxComboBox 
-    ID="ctlCOUNT_UNIT_ID"  runat="server" 
-    DropDownStyle="DropDown"   Height="30"
-    DataSourceID="dsCOMM_MDM_COUNT_UNIT_INFO" 
-    TextField="COUNT_UNIT_NAME" ValueField="COUNT_UNIT_ID"
-    Width="100%" IncrementalFilteringMode = "StartsWith" />
-                         </div>
-    </div>
-<div ID="EQUIPMENT_PATH" class="form-group col-sm-12">
+                        <dx:ASPxComboBox
+                            ID="ctlCOUNT_UNIT_ID" runat="server"
+                            DropDownStyle="DropDown" Height="30"
+                            DataSourceID="dsCOMM_MDM_COUNT_UNIT_INFO"
+                            TextField="COUNT_UNIT_NAME" ValueField="COUNT_UNIT_ID"
+                            Width="100%" IncrementalFilteringMode="StartsWith" />
+                    </div>
+                </div>
+                <div id="EQUIPMENT_PATH" class="form-group col-sm-12">
                     <label for="" class="col-sm-4 control-label">รูป:</label>
                     <div class="col-sm-8">
-                        <asp:FileUpload ID="ctlEQUIPMENT_PATH" runat="server"   /><br />
+                        <asp:FileUpload ID="ctlEQUIPMENT_PATH" runat="server" /><br />
                         <asp:HyperLink ID="linkEQUIPMENT_PATH" Visible="false" runat="server"></asp:HyperLink>
-                     </div>
-          </div>
-</div><!--end col 24-->
-</div><!--end row 25-->
+                    </div>
+                </div>
+            </div>
+            <!--end col 24-->
+        </div>
+        <!--end row 25-->
 
-</div>
-<div>
+    </div>
+    <div>
 
-<asp:SqlDataSource ID="dsRMSM_MDM_EQUIPMENT_INFO_DetailView" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
-            DeleteCommand="" 
+        <asp:SqlDataSource ID="dsRMSM_MDM_EQUIPMENT_INFO_DetailView" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+            DeleteCommand=""
             SelectCommand="SELECT RMSM_MDM_EQUIPMENT_INFO.EQUIPMENT_CODE
 ,RMSM_MDM_EQUIPMENT_INFO.EQUIPMENT_NAME
 ,RMSM_MDM_EQUIPMENT_INFO.COUNT_UNIT_ID
 ,RMSM_MDM_EQUIPMENT_INFO.EQUIPMENT_PATH
+,RMSM_MDM_EQUIPMENT_INFO.EQUIPMENT_AMOUNT
 FROM [dbo].[RMSM_MDM_EQUIPMENT_INFO]
 LEFT JOIN [OPM_COMMON_DATA].[dbo].[COMM_MDM_COUNT_UNIT_INFO] on
 [dbo].[RMSM_MDM_EQUIPMENT_INFO].COUNT_UNIT_ID = [OPM_COMMON_DATA].[dbo].[COMM_MDM_COUNT_UNIT_INFO].COUNT_UNIT_ID
-WHERE EQUIPMENT_ID = @EQUIPMENT_ID" 
-            InsertCommand="" 
-            UpdateCommand="" 
-            >
+WHERE EQUIPMENT_ID = @EQUIPMENT_ID"
+            InsertCommand=""
+            UpdateCommand="">
             <DeleteParameters>
                 <asp:Parameter Name="EQUIPMENT_ID" Type="Int32" />
             </DeleteParameters>
-<SelectParameters>
-<asp:Parameter Name="EQUIPMENT_ID" Type="Int32" />
-</SelectParameters>
-             </asp:SqlDataSource>
+            <SelectParameters>
+                <asp:Parameter Name="EQUIPMENT_ID" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
 
-<asp:SqlDataSource ID="dsCOMM_MDM_COUNT_UNIT_INFO" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" 
-                    SelectCommand="select COUNT_UNIT_NAME,COUNT_UNIT_ID from [OPM_COMMON_DATA].[dbo].COMM_MDM_COUNT_UNIT_INFO" >
-             </asp:SqlDataSource>
+        <asp:SqlDataSource ID="dsCOMM_MDM_COUNT_UNIT_INFO" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+            SelectCommand="select COUNT_UNIT_NAME,COUNT_UNIT_ID from [OPM_COMMON_DATA].[dbo].COMM_MDM_COUNT_UNIT_INFO"></asp:SqlDataSource>
 
-</div>
+    </div>
 </asp:Content>
 
